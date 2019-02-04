@@ -13,13 +13,12 @@ export default class OwnCard extends Component {
                     </section>
                     <section className="card--links--container">
                         <article className="card--link--article">
-                            <Link className="card--nav--link" to={`/shared`}>DETAILS</Link>
+                            <Link className="card--nav--link" to={`/${this.props.gearItem.id}/details`}>Details</Link>
                         </article>
                         <article className="card--link--article">
-                            <Link className="card--nav--link" to={`/borrowed`}>SHARE</Link>
+                            <Link className="card--nav--link" to={`/borrowed`}>Share</Link>
                         </article>
                     </section>
-
                 </section>
             </React.Fragment>
         )

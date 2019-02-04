@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Homepage from "./homepage/Homepage";
 import OwnList from "./ownList/OwnList"
 import GearManager from "../modules/GearManager";
+import GearDetails from "./ownList/GearDetails";
 
 
 export default class ApplicationViews extends Component {
@@ -18,6 +19,11 @@ export default class ApplicationViews extends Component {
     GearManager.getAllGearItems().then(r => {
       this.setState({
       gearItems: r
+      })
+    })
+    GearManager.getGearItem().then(r => {
+      this.setState({
+      gearItems:r
       })
     })
 
@@ -48,8 +54,8 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/tasks" render={props => {
-            return null
+          path="/:gearItemId(\d+)/details" render={props => {
+            return ( <GearDetails {...props} gearItems={this.state.gearItems} />)
             // Remove null and return the component which will show the user's tasks
           }}
         />
