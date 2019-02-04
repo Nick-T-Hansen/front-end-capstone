@@ -1,7 +1,20 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
+import Homepage from "./homepage/Homepage";
+
 
 export default class ApplicationViews extends Component {
+  state = {
+    users: [],
+    gearCards: [],
+    gearQualities: [],
+    gearClasses: []
+  }
+
+  componentDidMount() {
+
+
+  }
 
   render() {
     return (
@@ -15,14 +28,13 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/friends" render={props => {
-            return null
-            // Remove null and return the component which will show list of friends
+          path="/homepage" render={props => {
+            return (<Homepage {...props} />)
           }}
         />
 
         <Route
-          path="/messages" render={props => {
+          path="/own" render={props => {
             return null
             // Remove null and return the component which will show the messages
           }}
@@ -34,7 +46,7 @@ export default class ApplicationViews extends Component {
             // Remove null and return the component which will show the user's tasks
           }}
         />
-        
+
       </React.Fragment>
     );
   }
