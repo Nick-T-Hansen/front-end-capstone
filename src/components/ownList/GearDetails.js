@@ -1,0 +1,1 @@
+//expanded view of a piece of gears details. From here, a user can edit or delete the gear
