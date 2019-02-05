@@ -5,6 +5,14 @@ export default {
     getAllGearItems() {
         return fetch(`${remoteURL}/gearItems`).then(e => e.json())
     },
+    //GET all gear qualities for addForm dropdown
+    getAllGearQualities() {
+        return fetch(`${remoteURL}/gearQualities`).then(e => e.json())
+    },
+    //GET all gear classes for addForm dropdown
+    getAllGearClasses() {
+        return fetch(`${remoteURL}/gearClasses`).then(e => e.json())
+    },
     //GET a specific object by querying its id
     getGearItem(id) {
         // console.log("fetch", id)

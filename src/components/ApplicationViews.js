@@ -22,13 +22,26 @@ export default class ApplicationViews extends Component {
       gearItems: r
       })
     })
+
+    GearManager.getAllGearClasses().then(r => {
+      this.setState({
+      gearClasses: r
+      })
+    })
+
+    GearManager.getAllGearQualities().then(r => {
+      this.setState({
+      gearQualities: r
+      })
+    })
+
     // GearManager.getGearItem().then(r => {
     //   this.setState({
     //   gearItems:r
     //   })
     // })
-
   }
+
   //POST new gear item from addForm to API
   postNewGear = (newGearItemObject) => GearManager.post(newGearItemObject)
   .then(() => GearManager.getAllGearItems())

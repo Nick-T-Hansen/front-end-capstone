@@ -12,16 +12,16 @@ export default class AddForm extends Component {
         gearItemNotes: "",
     }
 
-        // Update state whenever an input field is edited
-        handleFieldChange = evt => {
-            const stateToChange = {}
-            stateToChange[evt.target.id] = evt.target.value
-            this.setState(stateToChange)
-        }
+    // Update state whenever an input field is edited
+    handleFieldChange = evt => {
+        const stateToChange = {}
+        stateToChange[evt.target.id] = evt.target.value
+        this.setState(stateToChange)
+    }
 
+    //create a new object from state which is then posted to JSON and the user is moved backed to the full /owned list
     constructNewEvent = evt => {
         evt.preventDefault()
-        console.log("click")
 
         const createGearItemObject = {
             gearName: this.state.gearItemName,
@@ -37,6 +37,9 @@ export default class AddForm extends Component {
         this.props.postNewGear(createGearItemObject).then(() => this.props.history.push("/owned"))
     }
     render() {
+        console.log("gearClasses array", this.props.gearClasses)
+        console.log("gearQuality array", this.props.gearQualities)
+        console.log("gear array", this.props.gearItems)
         return (
             <React.Fragment>
                 <form className="addForm">
@@ -51,14 +54,21 @@ export default class AddForm extends Component {
                     </div>
                     <div className="add--form--group">
                         <label htmlFor="class">Class</label>
-                        <select value={this.props.gearItemClass} onChange={this.handleFieldChange} id="gearItemClass">
-                            <option value="tent">tent</option>
+                        <select value={this.gearItemClass}
+                                onChange={this.handleFieldChange} id="gearItemClass">
+                        {this.props.gearClasses.map(gearClass =>
+                            <option key={gearClass.id} option value={gearClass.id}>{gearClass.class}</option>
+                        )}
+
                         </select>
                     </div>
                     <div className="add--form--group">
                         <label htmlFor="quality">Quality</label>
-                        <select value={this.props.gearItemClass} onChange={this.handleFieldChange} id="gearItemQuality">
-                            <option value="like new">Like New</option>
+                        <select value={this.gearItemQuality}
+                                onChange={this.handleFieldChange} id="gearItemQuality">
+                            {this.props.gearQualities.map(gearQuality =>
+                            <option key={gearQuality.id} option value={gearQuality.id}>{gearQuality.quality}</option>
+                            )}
                         </select>
                     </div>
                     <div className="form-group">
@@ -72,5 +82,5 @@ export default class AddForm extends Component {
                 </form>
             </React.Fragment>
         )
-}
+    }
 }
