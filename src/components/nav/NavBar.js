@@ -12,13 +12,13 @@ class NavBar extends Component {
                         <Link className="nav-link" to="/">Home</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/owned">OWNED</Link>
+                        <Link className="nav-link" to="/owned">Owned</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/shared">SHARED</Link>
+                        <Link className="nav-link" to="/shared">Shared</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/borrowed">BORROWED</Link>
+                        <Link className="nav-link" to="/borrowed">Borrowed</Link>
                     </li>
                 </ul>
             </nav>

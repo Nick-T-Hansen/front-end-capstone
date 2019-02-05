@@ -7,13 +7,13 @@ export default class Homepage extends Component {
             <React.Fragment>
                 <div className="homepage--container">
                     <article className="home--link--container">
-                        <Link className="home--nav--link" to={`/owned`}>OWNED</Link>
+                        <Link className="home--nav--link" to={`/owned`}>Owned</Link>
                     </article>
                         <article className="home--link--container">
-                    <Link className="home--nav--link" to={`/shared`}>SHARED</Link>
+                    <Link className="home--nav--link" to={`/shared`}>Shared</Link>
                     </article>
                         <article className="home--link--container">
-                    <Link className="home--nav--link" to={`/borrowed`}>BORROWED</Link>
+                    <Link className="home--nav--link" to={`/borrowed`}>Borrowed</Link>
                     </article>
                 </div>
             </React.Fragment>

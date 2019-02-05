@@ -7,14 +7,20 @@ export default class OwnList extends Component {
         return (
             <React.Fragment>
                 <div className="OwnList--container">
+                <h1>My Gear</h1>
                     {
                         this.props.gearItems.map(gearItem =>
                             <OwnCards key={gearItem.id} gearItem={gearItem} {...this.props} />
                         )
                     }
-                <h1>Test</h1>
                 </div>
-                <button className="btn btn--add--gear">Add Gear</button>
+                <button className="btn btn--add--gear"
+                        onClick={() => {
+                            console.log(this.props)
+                            this.props.history.push("/add")
+                        }}>
+                        Add Gear
+                </button>
             </React.Fragment>
         )
     }
