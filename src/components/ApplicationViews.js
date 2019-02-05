@@ -35,6 +35,12 @@ export default class ApplicationViews extends Component {
       })
     })
 
+    // GearManager.getAllGearItemsAndQualities().then(r => {
+    //   this.setState({
+    //   gearQualities: r
+    //   })
+    // })
+
     // GearManager.getGearItem().then(r => {
     //   this.setState({
     //   gearItems:r

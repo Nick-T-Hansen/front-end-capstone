@@ -26,7 +26,6 @@ export default class AddForm extends Component {
             alert("Please select options from the dropdown menus to continue.")
         } else {
 
-
         const createGearItemObject = {
             gearName: this.state.gearItemName,
             userId: 1,
@@ -66,7 +65,6 @@ export default class AddForm extends Component {
                         {this.props.gearClasses.map(gearClass =>
                             <option key={gearClass.id} value={gearClass.id}>{gearClass.class}</option>
                         )}
-
                         </select>
                     </div>
                     <div className="add--form--group">

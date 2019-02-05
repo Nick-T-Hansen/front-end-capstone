@@ -2,16 +2,19 @@
 import React, { Component } from "react"
 
 //gear class id and quality need to be expanded to display the value and not the id number
+
 export default class GearDetails extends Component {
+
+
     render() {
-        //logic to display the only object with the correct id number
+        //logic to display the only object with
         const gear = this.props.gearItems.find(
             a => a.id === parseInt(this.props.match.params.gearItemId)) || {};
         console.log(this.props)
         return (
-            <div key={this.props.gearItems.id} className="details--container">
+            <div key={gear.id} className="details--container">
                 <div className="details--entry">
-                    <h1>Gear Details</h1>
+                    <h1>Details</h1>
                     <h2 className="details--name" label="Name">
                         {gear.gearName}
                     </h2>
@@ -27,7 +30,8 @@ export default class GearDetails extends Component {
 
                     <button className="btn btn--edit--gear">Edit</button>
                     <button className="btn btn--delete--gear"
-                            onClick={() => this.props.deleteExistingGear(gear.gearId)}
+                            onClick={() => this.props.deleteExistingGear(gear.id)
+                                .then(() => this.props.history.push("/owned"))}
                             >Delete</button>
                 </div>
             </div>
