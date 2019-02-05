@@ -1,14 +1,13 @@
 //add new gear to a users OWN list
 import React, { Component } from "react"
-import { Link } from "react-router-dom";
 
 //need to add quality and class dropdowns to this list. Can I make it auto populate?
 export default class AddForm extends Component {
 
     state = {
-        gearItemName: " ",
-        gearItemClass: " ",
-        gearItemQuality: " ",
+        gearItemName: "",
+        gearItemClass: "0",
+        gearItemQuality: "0",
         gearItemNotes: "",
     }
 
@@ -23,6 +22,11 @@ export default class AddForm extends Component {
     constructNewEvent = evt => {
         evt.preventDefault()
 
+        if (this.state.gearItemQuality === "0" || this.state.gearItemClass === "0") {
+            alert("Please select options from the dropdown menus to continue.")
+        } else {
+
+
         const createGearItemObject = {
             gearName: this.state.gearItemName,
             userId: 1,
@@ -34,7 +38,9 @@ export default class AddForm extends Component {
         }
 
         // Create the event and redirect user to event list
-        this.props.postNewGear(createGearItemObject).then(() => this.props.history.push("/owned"))
+        this.props.postNewGear(createGearItemObject)
+            .then(() => this.props.history.push("/owned"))
+        }
     }
     render() {
         console.log("gearClasses array", this.props.gearClasses)
@@ -56,8 +62,9 @@ export default class AddForm extends Component {
                         <label htmlFor="class">Class</label>
                         <select value={this.gearItemClass}
                                 onChange={this.handleFieldChange} id="gearItemClass">
+                            <option value="0">select</option>
                         {this.props.gearClasses.map(gearClass =>
-                            <option key={gearClass.id} option value={gearClass.id}>{gearClass.class}</option>
+                            <option key={gearClass.id} value={gearClass.id}>{gearClass.class}</option>
                         )}
 
                         </select>
@@ -66,8 +73,9 @@ export default class AddForm extends Component {
                         <label htmlFor="quality">Quality</label>
                         <select value={this.gearItemQuality}
                                 onChange={this.handleFieldChange} id="gearItemQuality">
+                            <option value="0">select</option>
                             {this.props.gearQualities.map(gearQuality =>
-                            <option key={gearQuality.id} option value={gearQuality.id}>{gearQuality.quality}</option>
+                            <option key={gearQuality.id} value={gearQuality.id}>{gearQuality.quality}</option>
                             )}
                         </select>
                     </div>

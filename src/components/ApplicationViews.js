@@ -43,12 +43,24 @@ export default class ApplicationViews extends Component {
   }
 
   //POST new gear item from addForm to API
-  postNewGear = (newGearItemObject) => GearManager.post(newGearItemObject)
+  postNewGear = (newGearItemObject) =>{
+    return GearManager.post(newGearItemObject)
   .then(() => GearManager.getAllGearItems())
   .then(r => this.setState({
       gearItems: r
       })
-  )
+    )
+  }
+
+  deleteExistingGear = (id) =>{
+    return GearManager.deleteGearItem(id)
+  .then (() => GearManager.getAllGearItems())
+  .then(r => this.setState({
+    gearItems: r
+    })
+    )
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -74,8 +86,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           path="/:gearItemId(\d+)/details" render={props => {
-            return ( <GearDetails {...props} gearItems={this.state.gearItems} />)
-            //return the component which will show the user's tasks
+            return ( <GearDetails {...props} gearItems={this.state.gearItems} deleteExistingGear={this.deleteExistingGear} />)
           }}
         />
 

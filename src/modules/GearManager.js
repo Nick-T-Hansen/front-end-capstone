@@ -21,11 +21,17 @@ export default {
     //POST new gear item
     post(newGearItemObject) {
         return fetch(`${remoteURL}/gearItems`, {
-          method: "POST",
-          headers: {
+            method: "POST",
+            headers: {
             "Content-Type": "application/json"
-          },
-          body: JSON.stringify(newGearItemObject)
+            },
+            body: JSON.stringify(newGearItemObject)
         }).then(data => data.json())
-      },
+        },
+        //DELETE a gear item in the GearDetails page which deletes the item from the JSON
+        deleteGearItem(id) {
+        return fetch(`${remoteURL}/gearItems/${id}`, {
+            method: "DELETE"
+        })
+        },
 }

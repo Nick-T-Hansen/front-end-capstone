@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import OwnCards from "./OwnCards"
 
-
 export default class OwnList extends Component {
     render() {
         return (
