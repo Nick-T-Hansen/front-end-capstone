@@ -9,9 +9,9 @@ export default {
     getAllGearQualities() {
         return fetch(`${remoteURL}/gearQualities`).then(e => e.json())
     },
-    //GET all gear and expanded quality
+    //GET all gear and expanded quality and class
     getAllGearItemsAndQualities() {
-        return fetch(`${remoteURL}/gearItems?_expand=gearQuality`).then(e => e.json())
+        return fetch(`${remoteURL}/gearItems?_expand=gearQuality&_expand=gearClass`).then(e => e.json())
     },
     //GET all gear classes for addForm dropdown
     getAllGearClasses() {

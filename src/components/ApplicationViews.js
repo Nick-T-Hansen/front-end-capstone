@@ -17,11 +17,11 @@ export default class ApplicationViews extends Component {
 
   componentDidMount() {
 
-    GearManager.getAllGearItems().then(r => {
-      this.setState({
-      gearItems: r
-      })
-    })
+    // GearManager.getAllGearItems().then(r => {
+    //   this.setState({
+    //   gearItems: r
+    //   })
+    // })
 
     GearManager.getAllGearClasses().then(r => {
       this.setState({
@@ -35,11 +35,11 @@ export default class ApplicationViews extends Component {
       })
     })
 
-    // GearManager.getAllGearItemsAndQualities().then(r => {
-    //   this.setState({
-    //   gearQualities: r
-    //   })
-    // })
+    GearManager.getAllGearItemsAndQualities().then(r => {
+      this.setState({
+      gearItems: r
+      })
+    })
 
     // GearManager.getGearItem().then(r => {
     //   this.setState({
