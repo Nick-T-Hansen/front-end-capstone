@@ -5,6 +5,7 @@ import OwnList from "./ownList/OwnList"
 import GearManager from "../modules/GearManager";
 import GearDetails from "./ownList/GearDetails";
 import AddForm from "./ownList/AddForm";
+import EditForm from "./ownList/EditForm";
 
 
 export default class ApplicationViews extends Component {
@@ -67,6 +68,16 @@ export default class ApplicationViews extends Component {
     )
   }
 
+  updateGear = (gearId, editGearObject) => {
+    return GearManager.put(gearId, editGearObject)
+    .then(() => GearManager.getAllGearItems())
+    .then(r => {
+      this.setState({
+        gearItems: r
+      })
+    });
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -93,6 +104,12 @@ export default class ApplicationViews extends Component {
         <Route
           path="/:gearItemId(\d+)/details" render={props => {
             return ( <GearDetails {...props} gearItems={this.state.gearItems} deleteExistingGear={this.deleteExistingGear} />)
+          }}
+        />
+
+        <Route
+          path="/:gearItemId(\d+)/edit" render={props => {
+            return ( <EditForm {...props} gearItems={this.state.gearItems} gearQualities={this.state.gearQualities} gearClasses={this.state.gearClasses} updateGear={this.updateGear} />)
           }}
         />
 
