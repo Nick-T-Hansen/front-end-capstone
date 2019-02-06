@@ -42,9 +42,9 @@ export default class AddForm extends Component {
         }
     }
     render() {
-        console.log("gearClasses array", this.props.gearClasses)
-        console.log("gearQuality array", this.props.gearQualities)
-        console.log("gear array", this.props.gearItems)
+        // console.log("gearClasses array", this.props.gearClasses)
+        // console.log("gearQuality array", this.props.gearQualities)
+        // console.log("gear array", this.props.gearItems)
         return (
             <React.Fragment>
                 <form className="addForm">
