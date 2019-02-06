@@ -6,6 +6,7 @@ import GearManager from "../modules/GearManager";
 import GearDetails from "./ownList/GearDetails";
 import AddForm from "./ownList/AddForm";
 import EditForm from "./ownList/EditForm";
+import Login from "../components/authentication/Login"
 
 
 export default class ApplicationViews extends Component {
@@ -81,6 +82,8 @@ export default class ApplicationViews extends Component {
   render() {
     return (
       <React.Fragment>
+
+        <Route path="/login" component={Login} />
 
         <Route
           exact path="/" render={props => {
