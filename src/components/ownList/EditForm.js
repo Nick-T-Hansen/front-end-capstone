@@ -56,6 +56,8 @@ export default class EditForm extends Component {
         });
         }
     render() {
+
+
         return (
             <React.Fragment>
                 <form className="editForm">
@@ -70,11 +72,13 @@ export default class EditForm extends Component {
                     </div>
                     <div className="edit--form--group">
                         <label htmlFor="class">Class</label>
-                        <select value={this.editGearClassId}
+                        <select value={this.state.value}
                                 onChange={this.handleFieldChange} id="editGearClassId">
-                            <option value="0">Select Class</option>
                         {this.props.gearClasses.map(gearClass =>
-                            <option key={gearClass.id} value={gearClass.id}>{gearClass.class}</option>
+                            this.editGearClassId === gearClass.id?
+                                <option key={gearClass.id} selected={gearClass.id}>{gearClass.class}</option>
+                                :
+                                <option key={gearClass.id} value={gearClass.id}>{gearClass.class}</option>
                         )}
                         </select>
                     </div>
@@ -82,10 +86,12 @@ export default class EditForm extends Component {
                         <label htmlFor="quality">Quality</label>
                         <select value={this.editGearQualityId}
                                 onChange={this.handleFieldChange} id="editGearQualityId">
-                            <option value="0">Select Quality</option>
-                            {this.props.gearQualities.map(gearQuality =>
-                            <option key={gearQuality.id} value={gearQuality.id}>{gearQuality.quality}</option>
-                            )}
+                        {this.props.gearQualities.map(gearQuality =>
+                            this.editGearQualityId === gearQuality.id?
+                                <option key={gearQuality.id} selected value={gearQuality.id}>{gearQuality.quality}</option>
+                                :
+                                <option key={gearQuality.id} value={gearQuality.id}>{gearQuality.quality}</option>
+                        )}
                         </select>
                     </div>
                     <div className="edit--form--group">

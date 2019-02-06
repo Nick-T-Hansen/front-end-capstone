@@ -19,13 +19,13 @@ export default class GearDetails extends Component {
                         {gear.gearName}
                     </h2>
                     <p className="details--class" label="Gear Class">
-                        {gear.gearClassId}
+                        Class: {gear.gearClass? gear.gearClass.class:""}
                     </p>
                     <p className="details--quality" label="Gear Quality">
-                        {gear.gearQualityId}
+                        Quality: {gear.gearQuality? gear.gearQuality.quality:""}
                     </p>
                     <p className="details--notes" label="Notes">
-                        {gear.notes}
+                        Notes: {gear.notes}
                     </p>
                 </div>
                 <div className="details--links--container">

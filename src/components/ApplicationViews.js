@@ -6,6 +6,8 @@ import GearManager from "../modules/GearManager";
 import GearDetails from "./ownList/GearDetails";
 import AddForm from "./ownList/AddForm";
 import EditForm from "./ownList/EditForm";
+// import Login from "../components/authentication/Login"
+import Registration from "../components/authentication/Registration"
 
 
 export default class ApplicationViews extends Component {
@@ -16,13 +18,16 @@ export default class ApplicationViews extends Component {
     gearClasses: []
   }
 
+  // credential check in session storage
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+
   componentDidMount() {
 
-    GearManager.getAllGearItems().then(r => {
-      this.setState({
-      gearItems: r
-      })
-    })
+    // GearManager.getAllGearItems().then(r => {
+    //   this.setState({
+    //   gearItems: r
+    //   })
+    // })
 
     GearManager.getAllGearClasses().then(r => {
       this.setState({
@@ -36,11 +41,11 @@ export default class ApplicationViews extends Component {
       })
     })
 
-    // GearManager.getAllGearItemsAndQualities().then(r => {
-    //   this.setState({
-    //   gearQualities: r
-    //   })
-    // })
+    GearManager.getAllGearItemsAndQualities().then(r => {
+      this.setState({
+      gearItems: r
+      })
+    })
 
     // GearManager.getGearItem().then(r => {
     //   this.setState({
@@ -52,16 +57,25 @@ export default class ApplicationViews extends Component {
   //POST new gear item from addForm to API
   postNewGear = (newGearItemObject) =>{
     return GearManager.post(newGearItemObject)
-  .then(() => GearManager.getAllGearItems())
+  .then(() => GearManager.getAllGearItemsAndQualities())
   .then(r => this.setState({
       gearItems: r
       })
     )
   }
 
+  postNewUser = (newUser) =>{
+    return GearManager.postNewUser(newUser)
+  // .then(() => GearManager.getAllGearItemsAndQualities())
+  .then(r => this.setState({
+      users: r
+      })
+    )
+  }
+
   deleteExistingGear = (id) =>{
     return GearManager.deleteGearItem(id)
-  .then (() => GearManager.getAllGearItems())
+  .then (() => GearManager.getAllGearItemsAndQualities())
   .then(r => this.setState({
     gearItems: r
     })
@@ -70,7 +84,7 @@ export default class ApplicationViews extends Component {
 
   updateGear = (gearId, editGearObject) => {
     return GearManager.put(gearId, editGearObject)
-    .then(() => GearManager.getAllGearItems())
+    .then(() => GearManager.getAllGearItemsAndQualities())
     .then(r => {
       this.setState({
         gearItems: r
@@ -82,12 +96,21 @@ export default class ApplicationViews extends Component {
     return (
       <React.Fragment>
 
+        {/* <Route path="/login" component={Login} /> */}
+
         <Route
-          exact path="/" render={props => {
-            return null
-            // Remove null and return the component which will show news articles
+          exact path="/new" render={props => {
+            return ( <Registration {...props} postNewUser={this.postNewUser} />)
           }}
         />
+
+        <Route exact path="/" render={(props) => {
+          if (this.isAuthenticated()) {
+          return <Homepage locations={this.state.locations} />
+          } else {
+              return <Redirect to="/login" />
+          }
+        }} />
 
         <Route
           exact path="/home" render={props => {

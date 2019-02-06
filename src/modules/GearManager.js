@@ -9,13 +9,13 @@ export default {
     getAllGearQualities() {
         return fetch(`${remoteURL}/gearQualities`).then(e => e.json())
     },
+    //GET all gear and expanded quality and class
+    getAllGearItemsAndQualities() {
+        return fetch(`${remoteURL}/gearItems?_expand=gearQuality&_expand=gearClass`).then(e => e.json())
+    },
     //GET all gear classes for addForm dropdown
     getAllGearClasses() {
         return fetch(`${remoteURL}/gearClasses`).then(e => e.json())
-    },
-    //GET all gear and expanded quality for details
-    getAllGearItemsAndQualities() {
-        return fetch(`${remoteURL}/gearItems?_expand=gearQuality`).then(e => e.json())
     },
     //GET a specific object by querying its id
     getGearItem(id) {
@@ -30,6 +30,16 @@ export default {
             "Content-Type": "application/json"
             },
             body: JSON.stringify(newGearItemObject)
+        }).then(data => data.json())
+    },
+     //POST new user
+     postNewUser(newUser) {
+        return fetch(`${remoteURL}/users`, {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newUser)
         }).then(data => data.json())
     },
     //PUT (edit) gear item currently in JSON
