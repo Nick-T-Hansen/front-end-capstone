@@ -1,19 +1,70 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import Homepage from "./homepage/Homepage";
+import OwnList from "./ownList/OwnList"
+import GearManager from "../modules/GearManager";
+import GearDetails from "./ownList/GearDetails";
+import AddForm from "./ownList/AddForm";
 
 
 export default class ApplicationViews extends Component {
   state = {
     users: [],
-    gearCards: [],
+    gearItems: [],
     gearQualities: [],
     gearClasses: []
   }
 
   componentDidMount() {
 
+    GearManager.getAllGearItems().then(r => {
+      this.setState({
+      gearItems: r
+      })
+    })
 
+    GearManager.getAllGearClasses().then(r => {
+      this.setState({
+      gearClasses: r
+      })
+    })
+
+    GearManager.getAllGearQualities().then(r => {
+      this.setState({
+      gearQualities: r
+      })
+    })
+
+    // GearManager.getAllGearItemsAndQualities().then(r => {
+    //   this.setState({
+    //   gearQualities: r
+    //   })
+    // })
+
+    // GearManager.getGearItem().then(r => {
+    //   this.setState({
+    //   gearItems:r
+    //   })
+    // })
+  }
+
+  //POST new gear item from addForm to API
+  postNewGear = (newGearItemObject) =>{
+    return GearManager.post(newGearItemObject)
+  .then(() => GearManager.getAllGearItems())
+  .then(r => this.setState({
+      gearItems: r
+      })
+    )
+  }
+
+  deleteExistingGear = (id) =>{
+    return GearManager.deleteGearItem(id)
+  .then (() => GearManager.getAllGearItems())
+  .then(r => this.setState({
+    gearItems: r
+    })
+    )
   }
 
   render() {
@@ -28,25 +79,28 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/homepage" render={props => {
+          exact path="/home" render={props => {
             return (<Homepage {...props} />)
           }}
         />
 
         <Route
-          path="/own" render={props => {
-            return null
-            // Remove null and return the component which will show the messages
+          exact path="/owned" render={props => {
+            return ( <OwnList {...props} gearItems={this.state.gearItems} />)
           }}
         />
 
         <Route
-          path="/tasks" render={props => {
-            return null
-            // Remove null and return the component which will show the user's tasks
+          path="/:gearItemId(\d+)/details" render={props => {
+            return ( <GearDetails {...props} gearItems={this.state.gearItems} deleteExistingGear={this.deleteExistingGear} />)
           }}
         />
 
+        <Route
+          exact path="/add" render={props => {
+            return ( <AddForm {...props} gearItems={this.state.gearItems} gearQualities={this.state.gearQualities} gearClasses={this.state.gearClasses} postNewGear={this.postNewGear} />)
+          }}
+        />
       </React.Fragment>
     );
   }
