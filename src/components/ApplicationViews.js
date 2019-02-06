@@ -52,7 +52,7 @@ export default class ApplicationViews extends Component {
   //POST new gear item from addForm to API
   postNewGear = (newGearItemObject) =>{
     return GearManager.post(newGearItemObject)
-  .then(() => GearManager.getAllGearItems())
+  .then(() => GearManager.getAllGearItemsAndQualities())
   .then(r => this.setState({
       gearItems: r
       })
@@ -61,7 +61,7 @@ export default class ApplicationViews extends Component {
 
   deleteExistingGear = (id) =>{
     return GearManager.deleteGearItem(id)
-  .then (() => GearManager.getAllGearItems())
+  .then (() => GearManager.getAllGearItemsAndQualities())
   .then(r => this.setState({
     gearItems: r
     })
@@ -70,7 +70,7 @@ export default class ApplicationViews extends Component {
 
   updateGear = (gearId, editGearObject) => {
     return GearManager.put(gearId, editGearObject)
-    .then(() => GearManager.getAllGearItems())
+    .then(() => GearManager.getAllGearItemsAndQualities())
     .then(r => {
       this.setState({
         gearItems: r
