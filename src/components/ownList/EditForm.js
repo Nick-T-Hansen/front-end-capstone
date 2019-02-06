@@ -72,11 +72,11 @@ export default class EditForm extends Component {
                     </div>
                     <div className="edit--form--group">
                         <label htmlFor="class">Class</label>
-                        <select value={this.editGearClassId}
+                        <select value={this.state.value}
                                 onChange={this.handleFieldChange} id="editGearClassId">
                         {this.props.gearClasses.map(gearClass =>
                             this.editGearClassId === gearClass.id?
-                                <option key={gearClass.id} value={gearClass.id}>{gearClass.class}</option>
+                                <option key={gearClass.id} selected={gearClass.id}>{gearClass.class}</option>
                                 :
                                 <option key={gearClass.id} value={gearClass.id}>{gearClass.class}</option>
                         )}
@@ -88,7 +88,7 @@ export default class EditForm extends Component {
                                 onChange={this.handleFieldChange} id="editGearQualityId">
                         {this.props.gearQualities.map(gearQuality =>
                             this.editGearQualityId === gearQuality.id?
-                                <option key={gearQuality.id} value={gearQuality.id}>{gearQuality.quality}</option>
+                                <option key={gearQuality.id} selected value={gearQuality.id}>{gearQuality.quality}</option>
                                 :
                                 <option key={gearQuality.id} value={gearQuality.id}>{gearQuality.quality}</option>
                         )}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-export default class Login extends Component {
 
+export default class Registration extends Component {
     // set state
     state = {
         name: "",
@@ -17,26 +17,37 @@ export default class Login extends Component {
 
     //handler for login submit
     handleLogin = e => {
-        e.preventDefault();
-
-    //store user login in local storage (session storage)
-        sessionStorage.setItem(
-            "credentials",
-            JSON.stringify({
-                name: this.state.name,
-                email: this.state.email
-            })
-        );
+        e.preventDefault()
     }
 
+    //create a new object from state which is then posted to JSON and the user is moved backed to the full /owned list
+    createNewUser = evt => {
+        evt.preventDefault()
+
+        // if (this.state.newName === "" || this.state.newUser === "") {
+        //     alert("Please fill out all fields.")
+        // } else {
+
+        const newUser = {
+            newName: this.state.name,
+            newEmail: this.state.email
+        }
+
+    // Add the user to the "users" JSON and redirect to homepage
+    this.props.postNewUser(newUser)
+        .then(() => this.props.history.push("/home"))
+
+        }
+
     render () {
+        console.log(this.state.name)
         return (
             <React.Fragment>
                 <div className="welcome--container">
                     <h1> Welcome to Cave</h1>
                     <p>Get together. Get outside. Get your shit back.</p>
                 </div>
-                <div className="login--container">
+                <div className="registration--container">
                     <form onSubmit={this.handleLogin}>
                         <h2 className="sign--in">Please sign in</h2>
                         <label htmlFor="inputName">
@@ -54,11 +65,11 @@ export default class Login extends Component {
                             placeholder="Email"
                             required="" />
                         <button type="submit"
-                                onClick>
-                            Sign in
+                                onClick={this.createNewUser}  className="btn btn-registration--submit"
+                                >
+                            Register
                         </button>
                     </form>
-                    <Link className="login--nav--link" to={`/new`}>I'm new here, sign me up!</Link>
                 </div>
             </React.Fragment>
         )

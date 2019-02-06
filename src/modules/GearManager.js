@@ -32,6 +32,16 @@ export default {
             body: JSON.stringify(newGearItemObject)
         }).then(data => data.json())
     },
+     //POST new user
+     postNewUser(newUser) {
+        return fetch(`${remoteURL}/users`, {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newUser)
+        }).then(data => data.json())
+    },
     //PUT (edit) gear item currently in JSON
     put(gearId, eventObject) {
         return fetch(`${remoteURL}/gearItems/${gearId}`, {
