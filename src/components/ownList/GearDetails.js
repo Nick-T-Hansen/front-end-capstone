@@ -27,8 +27,11 @@ export default class GearDetails extends Component {
                     <p className="details--notes" label="Notes">
                         Notes: {gear.notes}
                     </p>
-
-                    <button className="btn btn--edit--gear">Edit</button>
+                </div>
+                <div className="details--links--container">
+                    <button className="btn btn--edit--gear"
+                            onClick={() => this.props.history.push(`/${gear.id}/edit`)}
+                            >Edit</button>
                     <button className="btn btn--delete--gear"
                             onClick={() => this.props.deleteExistingGear(gear.id)
                                 .then(() => this.props.history.push("/owned"))}

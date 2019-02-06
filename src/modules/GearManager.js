@@ -31,11 +31,21 @@ export default {
             },
             body: JSON.stringify(newGearItemObject)
         }).then(data => data.json())
+    },
+    //PUT (edit) gear item currently in JSON
+    put(gearId, eventObject) {
+        return fetch(`${remoteURL}/gearItems/${gearId}`, {
+            method: "PUT",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify(eventObject)
+        }).then(data => data.json());
         },
-        //DELETE a gear item in the GearDetails page which deletes the item from the JSON
-        deleteGearItem(id) {
+    //DELETE a gear item in the GearDetails page which deletes the item from the JSON
+    deleteGearItem(id) {
         return fetch(`${remoteURL}/gearItems/${id}`, {
-            method: "DELETE"
+        method: "DELETE"
         })
-        },
+    },
 }
