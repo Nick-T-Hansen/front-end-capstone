@@ -52,8 +52,8 @@ export default class ApplicationViews extends Component {
     // })
   }
 
-  // credential check in session storage
-  isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+
+  // isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
   //POST new gear item from addForm to API
   postNewGear = (newGearItemObject) =>{
@@ -65,7 +65,7 @@ export default class ApplicationViews extends Component {
     )
   }
 
-  //from the rigistration form, POST a new user to the API
+  //from the registration form, POST a new user to the API
   postNewUser = (newUser) =>{
     return GearManager.postNewUser(newUser)
   // .then(() => GearManager.getAllGearItemsAndQualities())
@@ -74,25 +74,28 @@ export default class ApplicationViews extends Component {
       })
     )
   }
+  //check a person trying to log in against the JSON and if it matches allow them access
+  //BROKEN HERE BROKEN HERE- need to itterate over array to get object
+  verifyUser = (aUser) =>{
+    return GearManager.getUserDataForLogin(aUser)
+      .then (aUser.fi(existingUser => {
+        console.log (existingUser.id === aUser.id)
+      }))
 
-  verifyUser = (existingUser) =>{
-    return GearManager.getUserDataForLogin(existingUser)
-      .then (existingUser => {
-        let loggedIn = false;
-        sessionStorage.setItem("User", existingUser.id);
+        // let loggedIn = false;
+        // sessionStorage.setItem("User", existingUser.id);
 
-        let sessionUser = sessionStorage.getItem("User");
-        console.log(sessionUser);
+        // let sessionUser = sessionStorage.getItem("User");
+        // // console.log(sessionUser);
 
-        if(this.props.userName === existingUser.name && this.props.userEmail === existingUser.email) {
-          loggedIn = true;
-        }
-        if(loggedIn === true) {
-        console.log("user exists")
-        }
-      })
+        // if(this.props.userName === existingUser.name && this.props.userEmail === existingUser.email) {
+        //   loggedIn = true;
+        // }
+        // if(loggedIn === true) {
+        // console.log("user exists", sessionStorage)
+        // }
+
   }
-
 
   deleteExistingGear = (id) =>{
     return GearManager.deleteGearItem(id)

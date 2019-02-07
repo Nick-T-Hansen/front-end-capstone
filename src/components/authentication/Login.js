@@ -24,10 +24,18 @@ export default class Login extends Component {
             email: this.state.email
         }
 
-        this.props.verifyUser(logInUser)
+        this.props.verifyUser(logInUser.name, logInUser.email)
 
     //how do I set/get session storage from login?
-    }
+    sessionStorage.setItem(
+        "credentials",
+        JSON.stringify({
+            name: this.state.name,
+            email: this.state.email
+    })
+    )
+        console.log(sessionStorage)
+}
 
     render () {
         return (
@@ -53,8 +61,8 @@ export default class Login extends Component {
                             id="email"
                             placeholder="Email"
                             required="" />
-                        <button type="submit"
-                                // onClick
+                        <button type="btn submit"
+                                onClick = {this.handleLogin}
                             >Sign in
                         </button>
                     </form>

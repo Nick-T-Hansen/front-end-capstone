@@ -37,8 +37,8 @@ export default {
             body: JSON.stringify(newGearItemObject)
         }).then(data => data.json())
     },
-     //POST new user
-     postNewUser(newUser) {
+    //POST new user
+    postNewUser(newUser) {
         return fetch(`${remoteURL}/users`, {
             method: "POST",
             headers: {
