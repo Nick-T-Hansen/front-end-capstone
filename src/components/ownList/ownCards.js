@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom";
+import "../cave.css"
 
 //each piece of gear will have its own card under the owners OWN list. These cards will allow a user to view the gear details and add it to the SHARE list.
 export default class OwnCard extends Component {

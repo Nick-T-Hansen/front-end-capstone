@@ -19,6 +19,13 @@ export default class Login extends Component {
     handleLogin = e => {
         e.preventDefault();
 
+        const logInUser = {
+            name: this.state.name,
+            email: this.state.email
+        }
+
+        this.props.verifyUser(logInUser)
+
     //how do I set/get session storage from login?
     }
 
@@ -47,11 +54,11 @@ export default class Login extends Component {
                             placeholder="Email"
                             required="" />
                         <button type="submit"
-                                onClick>
-                            Sign in
+                                // onClick
+                            >Sign in
                         </button>
                     </form>
-                    <Link className="login--nav--link" to={`/new`}>I'm new here, sign me up!</Link>
+                    <Link className="login--nav--link" to={`/register`}>I'm new here, sign me up!</Link>
                 </div>
             </React.Fragment>
         )

@@ -23,8 +23,8 @@ export default {
         return fetch(`${remoteURL}/gearItems/${id}`).then(e => e.json());
     },
     // GET username and email to confirm login and set session storage
-    getUserDataForLogin(username, email){
-        return fetch(`${remoteURL}/users?name=${username}&email=${email}`)
+    getUserDataForLogin(existingUser){
+        return fetch(`${remoteURL}/users?name=${existingUser.name}&email=${existingUser.email}`)
         .then(response => response.json())
     },
     //POST new gear item

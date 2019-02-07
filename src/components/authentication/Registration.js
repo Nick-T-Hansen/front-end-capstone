@@ -28,7 +28,10 @@ export default class Registration extends Component {
 
         // Add the user to the "users" JSON and redirect to homepage
         this.props.postNewUser(newUser)
-            .then( this.props.verifyUser(newUser.name, newUser.email))
+            .then( () => { sessionStorage.setItem("User", newUser.id)
+                let sessionUser = sessionStorage.getItem("User");
+                console.log(sessionUser);
+                })
             // .then(() => this.props.history.push("/home"))
 
         }
@@ -38,8 +41,8 @@ export default class Registration extends Component {
         return (
             <React.Fragment>
                 <div className="welcome--container">
-                    <h1> Welcome to Cave</h1>
-                    <p>Get together. Get outside. Get your shit back.</p>
+                    <h1> Glad to have you join us.</h1>
+                    <p>Your friends are too.</p>
                 </div>
                 <div className="registration--container">
                     <form onSubmit={this.handleLogin}>

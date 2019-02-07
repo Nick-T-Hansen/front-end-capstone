@@ -6,8 +6,9 @@ import GearManager from "../modules/GearManager";
 import GearDetails from "./ownList/GearDetails";
 import AddForm from "./ownList/AddForm";
 import EditForm from "./ownList/EditForm";
-// import Login from "../components/authentication/Login"
+import Login from "../components/authentication/Login"
 import Registration from "../components/authentication/Registration"
+import "./cave.css"
 
 
 export default class ApplicationViews extends Component {
@@ -74,25 +75,24 @@ export default class ApplicationViews extends Component {
     )
   }
 
-  verifyUser = (registrationUserName, registrationEmail) =>{
-    return GearManager.getUserDataForLogin(registrationUserName, registrationEmail)
-      .then (usersPassed => {
-        usersPassed.forEach(userPassed => {
-          let loggedIn = false;
-          sessionStorage.setItem("User", userPassed.id);
+  verifyUser = (existingUser) =>{
+    return GearManager.getUserDataForLogin(existingUser)
+      .then (existingUser => {
+        let loggedIn = false;
+        sessionStorage.setItem("User", existingUser.id);
 
-          let sessionUser = sessionStorage.getItem("User");
-          console.log(sessionUser);
+        let sessionUser = sessionStorage.getItem("User");
+        console.log(sessionUser);
 
-          if(registrationUserName === userPassed.name && registrationEmail === userPassed.email) {
-            loggedIn = true;
-          }
-          if(loggedIn === true) {
-            this.props.history.push("/home")
-          }
-        })
+        if(this.props.userName === existingUser.name && this.props.userEmail === existingUser.email) {
+          loggedIn = true;
+        }
+        if(loggedIn === true) {
+        console.log("user exists")
+        }
       })
   }
+
 
   deleteExistingGear = (id) =>{
     return GearManager.deleteGearItem(id)
@@ -117,21 +117,16 @@ export default class ApplicationViews extends Component {
     return (
       <React.Fragment>
 
-        {/* <Route path="/login" component={Login} /> */}
-
         <Route
-          exact path="/new" render={props => {
+        exact path="/" render={props => {
+          return ( <Login {...props} postNewUser={this.postNewUser} verifyUser={this.verifyUser} />)
+        }}
+        />
+        <Route
+          exact path="/register" render={props => {
             return ( <Registration {...props} postNewUser={this.postNewUser} verifyUser={this.verifyUser} />)
           }}
         />
-
-        <Route exact path="/" render={(props) => {
-          if (this.isAuthenticated()) {
-          return <Homepage locations={this.state.locations} />
-          } else {
-              return <Redirect to="/login" />
-          }
-        }} />
 
         <Route
           exact path="/home" render={props => {
@@ -166,3 +161,4 @@ export default class ApplicationViews extends Component {
     );
   }
 }
+
