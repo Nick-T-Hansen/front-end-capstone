@@ -15,7 +15,6 @@ export default class Registration extends Component {
         this.setState(stateToChange);
     }
 
-
     //create a new object from state which is then posted to JSON and the user is moved backed to the full /owned list
     createNewUser = evt => {
 
