@@ -18,9 +18,6 @@ export default class ApplicationViews extends Component {
     gearClasses: []
   }
 
-  // credential check in session storage
-  isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
-
   componentDidMount() {
 
     // GearManager.getAllGearItems().then(r => {
@@ -54,6 +51,9 @@ export default class ApplicationViews extends Component {
     // })
   }
 
+  // credential check in session storage
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+
   //POST new gear item from addForm to API
   postNewGear = (newGearItemObject) =>{
     return GearManager.post(newGearItemObject)
@@ -64,6 +64,7 @@ export default class ApplicationViews extends Component {
     )
   }
 
+  //from the rigistration form, POST a new user to the API
   postNewUser = (newUser) =>{
     return GearManager.postNewUser(newUser)
   // .then(() => GearManager.getAllGearItemsAndQualities())
@@ -71,6 +72,26 @@ export default class ApplicationViews extends Component {
       users: r
       })
     )
+  }
+
+  verifyUser = (registrationUserName, registrationEmail) =>{
+    return GearManager.getUserDataForLogin(registrationUserName, registrationEmail)
+      .then (usersPassed => {
+        usersPassed.forEach(userPassed => {
+          let loggedIn = false;
+          sessionStorage.setItem("User", userPassed.id);
+
+          let sessionUser = sessionStorage.getItem("User");
+          console.log(sessionUser);
+
+          if(registrationUserName === userPassed.name && registrationEmail === userPassed.email) {
+            loggedIn = true;
+          }
+          if(loggedIn === true) {
+            this.props.history.push("/home")
+          }
+        })
+      })
   }
 
   deleteExistingGear = (id) =>{
@@ -100,7 +121,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/new" render={props => {
-            return ( <Registration {...props} postNewUser={this.postNewUser} />)
+            return ( <Registration {...props} postNewUser={this.postNewUser} verifyUser={this.verifyUser} />)
           }}
         />
 

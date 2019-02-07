@@ -22,6 +22,11 @@ export default {
         // console.log("fetch", id)
         return fetch(`${remoteURL}/gearItems/${id}`).then(e => e.json());
     },
+    // GET username and email to confirm login and set session storage
+    getUserDataForLogin(username, email){
+        return fetch(`${remoteURL}/users?name=${username}&email=${email}`)
+        .then(response => response.json())
+    },
     //POST new gear item
     post(newGearItemObject) {
         return fetch(`${remoteURL}/gearItems`, {

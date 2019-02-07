@@ -15,32 +15,27 @@ export default class Registration extends Component {
         this.setState(stateToChange);
     }
 
-    //handler for login submit
-    handleLogin = e => {
-        e.preventDefault()
-    }
 
     //create a new object from state which is then posted to JSON and the user is moved backed to the full /owned list
     createNewUser = evt => {
+
         evt.preventDefault()
 
-        // if (this.state.newName === "" || this.state.newUser === "") {
-        //     alert("Please fill out all fields.")
-        // } else {
-
         const newUser = {
-            newName: this.state.name,
-            newEmail: this.state.email
+            name: this.state.name,
+            email: this.state.email
         }
+        console.log("posted to API", newUser)
 
-    // Add the user to the "users" JSON and redirect to homepage
-    this.props.postNewUser(newUser)
-        .then(() => this.props.history.push("/home"))
+        // Add the user to the "users" JSON and redirect to homepage
+        this.props.postNewUser(newUser)
+            .then( this.props.verifyUser(newUser.name, newUser.email))
+            // .then(() => this.props.history.push("/home"))
 
         }
 
     render () {
-        console.log(this.state.name)
+        console.log("name", this.state.name, "email", this.state.email)
         return (
             <React.Fragment>
                 <div className="welcome--container">
@@ -57,7 +52,7 @@ export default class Registration extends Component {
                             id="name"
                             placeholder="Name"
                             required="" autoFocus="" />
-                        <label htmlFor="email">
+                        <label htmlFor="inputEmail">
                             Email
                         </label>
                         <input onChange={this.handleFieldChange} type="email"

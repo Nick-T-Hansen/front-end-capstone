@@ -19,14 +19,7 @@ export default class Login extends Component {
     handleLogin = e => {
         e.preventDefault();
 
-    //store user login in local storage (session storage)
-        sessionStorage.setItem(
-            "credentials",
-            JSON.stringify({
-                name: this.state.name,
-                email: this.state.email
-            })
-        );
+    //how do I set/get session storage from login?
     }
 
     render () {
@@ -62,7 +55,5 @@ export default class Login extends Component {
                 </div>
             </React.Fragment>
         )
-
     }
-
 }
