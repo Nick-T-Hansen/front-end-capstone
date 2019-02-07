@@ -1,0 +1,11 @@
+.OwnList--container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card {
+    text-align: center;
+    width: 12rem;
+    height: 15rem;
+}
+

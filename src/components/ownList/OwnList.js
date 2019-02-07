@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import OwnCards from "./ownCards"
+import OwnCards from "./OwnCards"
 
 export default class OwnList extends Component {
     render() {
@@ -7,11 +7,13 @@ export default class OwnList extends Component {
             <React.Fragment>
                 <div className="OwnList--container">
                 <h1>My Gear</h1>
-                    {
-                        this.props.gearItems.map(gearItem =>
-                            <OwnCards key={gearItem.id} gearItem={gearItem} {...this.props} />
-                        )
-                    }
+                    <div className="card--container">
+                        {
+                            this.props.gearItems.map(gearItem =>
+                                <OwnCards key={gearItem.id} gearItem={gearItem} {...this.props} />
+                            )
+                        }
+                    </div>
                 </div>
                 <button className="btn btn--add--gear"
                         onClick={() => {

@@ -5,16 +5,16 @@ export default class Homepage extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="homepage--container">
-                    <article className="home--link--container">
+                <div className=" row homepage--container">
+                    <div className="home--link--container col-sm-4">
                         <Link className="home--nav--link" to={`/owned`}>Owned</Link>
-                    </article>
-                        <article className="home--link--container">
+                    </div>
+                        <div className="home--link--container" class="col-sm-4">
                     <Link className="home--nav--link" to={`/shared`}>Shared</Link>
-                    </article>
-                        <article className="home--link--container">
+                    </div>
+                        <div className="home--link--container" class="col-sm-4">
                     <Link className="home--nav--link" to={`/borrowed`}>Borrowed</Link>
-                    </article>
+                    </div>
                 </div>
             </React.Fragment>
         )

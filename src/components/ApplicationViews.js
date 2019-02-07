@@ -8,7 +8,7 @@ import AddForm from "./ownList/AddForm";
 import EditForm from "./ownList/EditForm";
 import Login from "../components/authentication/Login"
 import Registration from "../components/authentication/Registration"
-import "./cave.css"
+
 
 
 export default class ApplicationViews extends Component {
