@@ -45,14 +45,12 @@ export default class ApplicationViews extends Component {
       })
     })
 
-    // GearManager.getGearItem().then(r => {
-    //   this.setState({
-    //   gearItems:r
-    //   })
-    // })
+    GearManager.getAllUsers().then(r => {
+      this.setState({
+        users: r
+      })
+    })
   }
-
-
   // isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
   //POST new gear item from addForm to API
@@ -65,36 +63,9 @@ export default class ApplicationViews extends Component {
     )
   }
 
-  //from the registration form, POST a new user to the API
+
   postNewUser = (newUser) =>{
     return GearManager.postNewUser(newUser)
-  // .then(() => GearManager.getAllGearItemsAndQualities())
-  .then(r => this.setState({
-      users: r
-      })
-    )
-  }
-  //check a person trying to log in against the JSON and if it matches allow them access
-  //BROKEN HERE BROKEN HERE- need to itterate over array to get object
-  verifyUser = (aUser) =>{
-    return GearManager.getUserDataForLogin(aUser)
-      .then (aUser.fi(existingUser => {
-        console.log (existingUser.id === aUser.id)
-      }))
-
-        // let loggedIn = false;
-        // sessionStorage.setItem("User", existingUser.id);
-
-        // let sessionUser = sessionStorage.getItem("User");
-        // // console.log(sessionUser);
-
-        // if(this.props.userName === existingUser.name && this.props.userEmail === existingUser.email) {
-        //   loggedIn = true;
-        // }
-        // if(loggedIn === true) {
-        // console.log("user exists", sessionStorage)
-        // }
-
   }
 
   deleteExistingGear = (id) =>{
@@ -116,13 +87,16 @@ export default class ApplicationViews extends Component {
     });
   }
 
+  // UPDATING ALL PAGES SPECFIC TO USER (resetting state after you login with a different user)
+
+
   render() {
     return (
       <React.Fragment>
 
         <Route
         exact path="/" render={props => {
-          return ( <Login {...props} postNewUser={this.postNewUser} verifyUser={this.verifyUser} />)
+          return ( <Login {...props} postNewUser={this.postNewUser} verifyUser={this.verifyUser} users={this.state.users} />)
         }}
         />
         <Route

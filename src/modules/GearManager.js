@@ -17,6 +17,10 @@ export default {
     getAllGearClasses() {
         return fetch(`${remoteURL}/gearClasses`).then(e => e.json())
     },
+     //GET all users
+     getAllUsers() {
+        return fetch(`${remoteURL}/users`).then(e => e.json())
+     },
     //GET a specific object by querying its id
     getGearItem(id) {
         // console.log("fetch", id)

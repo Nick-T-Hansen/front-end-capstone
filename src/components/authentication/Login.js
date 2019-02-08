@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
 export default class Login extends Component {
 
     // set state
@@ -19,22 +20,29 @@ export default class Login extends Component {
     handleLogin = e => {
         e.preventDefault();
 
-        const logInUser = {
-            name: this.state.name,
-            email: this.state.email
+        //  setting username in session storage.
+        sessionStorage.setItem(
+            "name",
+            this.state.name
+        )
+
+        //compare the possible user trying to login to the array of users who have registered and are stored in the users API. If the user passes the authentication, the userId is set and used to render all pages.
+        let possibleUser = sessionStorage.getItem("name")
+        let authenticated = this.props.users.find(user => user.name === possibleUser)
+
+        console.log("props", this.props)
+        console.log("authenticated", authenticated)
+        console.log("session storage", sessionStorage)
+
+        if (authenticated === undefined){
+            alert("Grump Cat says 'Nope!' Try again or create an account")
         }
 
-        this.props.verifyUser(logInUser.name, logInUser.email)
-
-    //how do I set/get session storage from login?
-    sessionStorage.setItem(
-        "credentials",
-        JSON.stringify({
-            name: this.state.name,
-            email: this.state.email
-    })
-    )
-        console.log(sessionStorage)
+        else {
+        sessionStorage.setItem("userId",authenticated.id)
+        // this.props.updateComponent()
+        this.props.history.push("/home")
+        }
 }
 
     render () {

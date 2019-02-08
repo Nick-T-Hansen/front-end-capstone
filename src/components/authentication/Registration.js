@@ -15,6 +15,19 @@ export default class Registration extends Component {
         this.setState(stateToChange);
     }
 
+    // Simplistic handler for login submit
+    handleRegister = (e) => {
+        e.preventDefault()
+
+        sessionStorage.setItem(
+            "credentials",
+            JSON.stringify({
+                name: this.state.name,
+                email: this.state.email
+            })
+        )
+    }
+
     //create a new object from state which is then posted to JSON and the user is moved backed to the full /owned list
     createNewUser = evt => {
 
@@ -24,16 +37,15 @@ export default class Registration extends Component {
             name: this.state.name,
             email: this.state.email
         }
+
         console.log("posted to API", newUser)
 
         // Add the user to the "users" JSON and redirect to homepage
         this.props.postNewUser(newUser)
-            .then( () => { sessionStorage.setItem("User", newUser.id)
-                let sessionUser = sessionStorage.getItem("User");
-                console.log(sessionUser);
-                })
-            // .then(() => this.props.history.push("/home"))
-
+            .then( (r => {
+                console.log(r)
+                this.props.history.push("/home")
+            }))
         }
 
     render () {

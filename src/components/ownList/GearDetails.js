@@ -1,13 +1,9 @@
 //expanded view of a piece of gears details. From here, a user can edit or delete the gear
 import React, { Component } from "react"
-
-//gear class id and quality need to be expanded to display the value and not the id number
-
 export default class GearDetails extends Component {
 
 
     render() {
-        //logic to display the only object with
         const gear = this.props.gearItems.find(
             a => a.id === parseInt(this.props.match.params.gearItemId)) || {};
         console.log(this.props)
