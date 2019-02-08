@@ -21,12 +21,11 @@ export default class ApplicationViews extends Component {
 
   componentDidMount() {
 
-    // GearManager.getAllGearItems().then(r => {
-    //   this.setState({
-    //   gearItems: r
-    //   })
-    // })
-
+    GearManager.getAllGearExpanded().then(r => {
+      this.setState({
+      gearItems: r
+      })
+    })
     GearManager.getAllGearClasses().then(r => {
       this.setState({
       gearClasses: r
@@ -39,38 +38,42 @@ export default class ApplicationViews extends Component {
       })
     })
 
-    GearManager.getAllGearItemsAndQualities().then(r => {
-      this.setState({
-      gearItems: r
-      })
-    })
-
     GearManager.getAllUsers().then(r => {
       this.setState({
         users: r
       })
     })
   }
-  // isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
-  //POST new gear item from addForm to API
+    // UPDATING ALL PAGES SPECFIC TO USER (resetting state after you login with a different user)
+    updateComponent = () => {
+
+      GearManager.getAllGearExpanded().then(r => {
+        this.setState({
+        gearItems: r
+        })
+      })
+    }
+
+
+  // OTHER FETCH CALLS
+
+  postNewUser = (newUser) =>{
+    return GearManager.postNewUser(newUser)
+  }
+//switched geatAllGearItemsAndQualities to .getAllGearExpanded
   postNewGear = (newGearItemObject) =>{
     return GearManager.post(newGearItemObject)
-  .then(() => GearManager.getAllGearItemsAndQualities())
+  .then(() => GearManager.getAllGearExpanded())
   .then(r => this.setState({
       gearItems: r
       })
     )
   }
 
-
-  postNewUser = (newUser) =>{
-    return GearManager.postNewUser(newUser)
-  }
-
   deleteExistingGear = (id) =>{
     return GearManager.deleteGearItem(id)
-  .then (() => GearManager.getAllGearItemsAndQualities())
+  .then (() => GearManager.getAllGearExpanded())
   .then(r => this.setState({
     gearItems: r
     })
@@ -79,15 +82,13 @@ export default class ApplicationViews extends Component {
 
   updateGear = (gearId, editGearObject) => {
     return GearManager.put(gearId, editGearObject)
-    .then(() => GearManager.getAllGearItemsAndQualities())
+    .then(() => GearManager.getAllGearExpanded())
     .then(r => {
       this.setState({
         gearItems: r
       })
     });
   }
-
-  // UPDATING ALL PAGES SPECFIC TO USER (resetting state after you login with a different user)
 
 
   render() {
@@ -96,7 +97,7 @@ export default class ApplicationViews extends Component {
 
         <Route
         exact path="/" render={props => {
-          return ( <Login {...props} postNewUser={this.postNewUser} verifyUser={this.verifyUser} users={this.state.users} />)
+          return ( <Login {...props} postNewUser={this.postNewUser} users={this.state.users} updateComponent={this.updateComponent} />)
         }}
         />
         <Route
@@ -107,13 +108,13 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/home" render={props => {
-            return (<Homepage {...props} />)
+            return (<Homepage {...props}  />)
           }}
         />
 
         <Route
           exact path="/owned" render={props => {
-            return ( <OwnList {...props} gearItems={this.state.gearItems} />)
+            return ( <OwnList {...props} gearItems={this.state.gearItems} updateComponent={this.updateComponent} />)
           }}
         />
 

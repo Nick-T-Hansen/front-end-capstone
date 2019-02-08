@@ -29,10 +29,10 @@ export default class Login extends Component {
         //compare the possible user trying to login to the array of users who have registered and are stored in the users API. If the user passes the authentication, the userId is set and used to render all pages.
         let possibleUser = sessionStorage.getItem("name")
         let authenticated = this.props.users.find(user => user.name === possibleUser)
+                //add email as well here
 
-        console.log("props", this.props)
         console.log("authenticated", authenticated)
-        console.log("session storage", sessionStorage)
+
 
         if (authenticated === undefined){
             alert("Grump Cat says 'Nope!' Try again or create an account")
@@ -40,7 +40,10 @@ export default class Login extends Component {
 
         else {
         sessionStorage.setItem("userId",authenticated.id)
-        // this.props.updateComponent()
+        let currentUser = sessionStorage.getItem("userId")
+        let logedIn = Number(currentUser)
+        console.log(logedIn)
+        this.props.updateComponent()
         this.props.history.push("/home")
         }
 }
