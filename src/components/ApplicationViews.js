@@ -21,11 +21,11 @@ export default class ApplicationViews extends Component {
 
   componentDidMount() {
 
-    // GearManager.getAllGearItems().then(r => {
-    //   this.setState({
-    //   gearItems: r
-    //   })
-    // })
+    GearManager.getAllGearExpanded().then(r => {
+      this.setState({
+      gearItems: r
+      })
+    })
     GearManager.getAllGearClasses().then(r => {
       this.setState({
       gearClasses: r
@@ -48,7 +48,7 @@ export default class ApplicationViews extends Component {
     // UPDATING ALL PAGES SPECFIC TO USER (resetting state after you login with a different user)
     updateComponent = () => {
 
-      GearManager.getAllGearItemsAndQualities().then(r => {
+      GearManager.getAllGearExpanded().then(r => {
         this.setState({
         gearItems: r
         })
@@ -114,7 +114,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/owned" render={props => {
-            return ( <OwnList {...props} gearItems={this.state.gearItems} />)
+            return ( <OwnList {...props} gearItems={this.state.gearItems}  />)
           }}
         />
 

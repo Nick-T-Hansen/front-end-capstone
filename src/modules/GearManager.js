@@ -15,7 +15,12 @@ export default {
     },
     //GET expanded all (gear-user,class,quality)
     getAllGearExpanded() {
-        return fetch(`${remoteURL}/gearItems?_expand=gearQuality&_expand=gearClass&_expand=user`)
+        let sessionUser = sessionStorage.getItem("userId")
+        let sessionUserId = Number(sessionUser)
+        console.log("userId", sessionUserId)
+        return fetch(`${remoteURL}/gearItems?userId=${sessionUserId}&_expand=gearQuality&_expand=gearClass`)
+        .then(e => e.json())
+        //
     },
     //GET all gear classes for addForm dropdown
     getAllGearClasses() {
