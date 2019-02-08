@@ -44,7 +44,7 @@ export default class Registration extends Component {
         this.props.postNewUser(newUser)
             .then( (r => {
                 console.log(r)
-                this.props.history.push("/home")
+                this.props.history.push("/")
             }))
         }
 

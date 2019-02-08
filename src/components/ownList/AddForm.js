@@ -28,7 +28,7 @@ export default class AddForm extends Component {
 
         const createGearItemObject = {
             gearName: this.state.gearItemName,
-            userId: sessionStorage.getItem("userId"),
+            userId: Number(sessionStorage.getItem("userId")),
             gearQualityId: Number(this.state.gearItemQuality),
             gearClassId: Number(this.state.gearItemClass),
             notes: this.state.gearItemNotes,

@@ -13,14 +13,18 @@ export default {
     getAllGearItemsAndQualities() {
         return fetch(`${remoteURL}/gearItems?_expand=gearQuality&_expand=gearClass`).then(e => e.json())
     },
+    //GET expanded all (gear-user,class,quality)
+    getAllGearExpanded() {
+        return fetch(`${remoteURL}/gearItems?_expand=gearQuality&_expand=gearClass&_expand=user`)
+    },
     //GET all gear classes for addForm dropdown
     getAllGearClasses() {
         return fetch(`${remoteURL}/gearClasses`).then(e => e.json())
     },
-     //GET all users
-     getAllUsers() {
+    //GET all users
+    getAllUsers() {
         return fetch(`${remoteURL}/users`).then(e => e.json())
-     },
+    },
     //GET a specific object by querying its id
     getGearItem(id) {
         // console.log("fetch", id)

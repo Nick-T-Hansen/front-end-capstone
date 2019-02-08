@@ -38,18 +38,25 @@ export default class ApplicationViews extends Component {
       })
     })
 
-    GearManager.getAllGearItemsAndQualities().then(r => {
-      this.setState({
-      gearItems: r
-      })
-    })
     GearManager.getAllUsers().then(r => {
       this.setState({
         users: r
       })
     })
   }
+
+    // UPDATING ALL PAGES SPECFIC TO USER (resetting state after you login with a different user)
+    updateComponent = () => {
+
+      GearManager.getAllGearItemsAndQualities().then(r => {
+        this.setState({
+        gearItems: r
+        })
+      })
+    }
+
   // isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+  // OTHER FETCH CALLS
 
   postNewUser = (newUser) =>{
     return GearManager.postNewUser(newUser)
@@ -83,11 +90,6 @@ export default class ApplicationViews extends Component {
     });
   }
 
-  // UPDATING ALL PAGES SPECFIC TO USER (resetting state after you login with a different user)
-//   updateComponent = () => {
-
-
-// }
 
   render() {
     return (
