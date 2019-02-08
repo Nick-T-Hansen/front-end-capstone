@@ -30,9 +30,9 @@ export default class Login extends Component {
         let possibleUser = sessionStorage.getItem("name")
         let authenticated = this.props.users.find(user => user.name === possibleUser)
 
-        console.log("props", this.props)
+
         console.log("authenticated", authenticated)
-        console.log("session storage", sessionStorage)
+
 
         if (authenticated === undefined){
             alert("Grump Cat says 'Nope!' Try again or create an account")

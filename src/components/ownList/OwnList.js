@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import OwnCards from "./OwnCards"
+import OwnCards from "./ownCards"
 
 export default class OwnList extends Component {
     render() {

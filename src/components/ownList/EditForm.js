@@ -31,8 +31,8 @@ export default class EditForm extends Component {
             const editGearItemObject = {
                 gearName: this.state.editGearName,
                 userId: this.props.match.params.userId,
-                gearQualityId: this.state.editGearQualityId,
-                gearClassId: this.state.editGearClassId,
+                gearQualityId: Number(this.state.editGearQualityId),
+                gearClassId: Number(this.state.editGearClassId),
                 notes: this.state.editNotes,
                 borrowedUserId: "",
                 shared: false

@@ -26,7 +26,6 @@ export default class ApplicationViews extends Component {
     //   gearItems: r
     //   })
     // })
-
     GearManager.getAllGearClasses().then(r => {
       this.setState({
       gearClasses: r
@@ -44,7 +43,6 @@ export default class ApplicationViews extends Component {
       gearItems: r
       })
     })
-
     GearManager.getAllUsers().then(r => {
       this.setState({
         users: r
@@ -52,17 +50,6 @@ export default class ApplicationViews extends Component {
     })
   }
   // isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
-
-  //POST new gear item from addForm to API
-  postNewGear = (newGearItemObject) =>{
-    return GearManager.post(newGearItemObject)
-  .then(() => GearManager.getAllGearItemsAndQualities())
-  .then(r => this.setState({
-      gearItems: r
-      })
-    )
-  }
-
 
   postNewUser = (newUser) =>{
     return GearManager.postNewUser(newUser)
@@ -88,7 +75,10 @@ export default class ApplicationViews extends Component {
   }
 
   // UPDATING ALL PAGES SPECFIC TO USER (resetting state after you login with a different user)
+//   updateComponent = () => {
 
+
+// }
 
   render() {
     return (
@@ -96,7 +86,7 @@ export default class ApplicationViews extends Component {
 
         <Route
         exact path="/" render={props => {
-          return ( <Login {...props} postNewUser={this.postNewUser} verifyUser={this.verifyUser} users={this.state.users} />)
+          return ( <Login {...props} postNewUser={this.postNewUser} users={this.state.users} updateComponent={this.updateComponent} />)
         }}
         />
         <Route
@@ -107,7 +97,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/home" render={props => {
-            return (<Homepage {...props} />)
+            return (<Homepage {...props}  />)
           }}
         />
 
