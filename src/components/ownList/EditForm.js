@@ -30,7 +30,7 @@ export default class EditForm extends Component {
 
             const editGearItemObject = {
                 gearName: this.state.editGearName,
-                userId: this.props.match.params.userId,
+                userId: Number(sessionStorage.getItem("userId")),
                 gearQualityId: Number(this.state.editGearQualityId),
                 gearClassId: Number(this.state.editGearClassId),
                 notes: this.state.editNotes,

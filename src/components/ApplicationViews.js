@@ -55,16 +55,16 @@ export default class ApplicationViews extends Component {
       })
     }
 
-  // isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+
   // OTHER FETCH CALLS
 
   postNewUser = (newUser) =>{
     return GearManager.postNewUser(newUser)
   }
-
+//switched geatAllGearItemsAndQualities to .getAllGearExpanded
   postNewGear = (newGearItemObject) =>{
     return GearManager.post(newGearItemObject)
-  .then(() => GearManager.getAllGearItemsAndQualities())
+  .then(() => GearManager.getAllGearExpanded())
   .then(r => this.setState({
       gearItems: r
       })
@@ -73,7 +73,7 @@ export default class ApplicationViews extends Component {
 
   deleteExistingGear = (id) =>{
     return GearManager.deleteGearItem(id)
-  .then (() => GearManager.getAllGearItemsAndQualities())
+  .then (() => GearManager.getAllGearExpanded())
   .then(r => this.setState({
     gearItems: r
     })
@@ -82,7 +82,7 @@ export default class ApplicationViews extends Component {
 
   updateGear = (gearId, editGearObject) => {
     return GearManager.put(gearId, editGearObject)
-    .then(() => GearManager.getAllGearItemsAndQualities())
+    .then(() => GearManager.getAllGearExpanded())
     .then(r => {
       this.setState({
         gearItems: r
@@ -114,7 +114,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/owned" render={props => {
-            return ( <OwnList {...props} gearItems={this.state.gearItems}  />)
+            return ( <OwnList {...props} gearItems={this.state.gearItems} updateComponent={this.updateComponent} />)
           }}
         />
 
