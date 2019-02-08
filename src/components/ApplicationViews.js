@@ -55,6 +55,15 @@ export default class ApplicationViews extends Component {
     return GearManager.postNewUser(newUser)
   }
 
+  postNewGear = (newGearItemObject) =>{
+    return GearManager.post(newGearItemObject)
+  .then(() => GearManager.getAllGearItemsAndQualities())
+  .then(r => this.setState({
+      gearItems: r
+      })
+    )
+  }
+
   deleteExistingGear = (id) =>{
     return GearManager.deleteGearItem(id)
   .then (() => GearManager.getAllGearItemsAndQualities())
