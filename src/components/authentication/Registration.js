@@ -15,37 +15,46 @@ export default class Registration extends Component {
         this.setState(stateToChange);
     }
 
-    //handler for login submit
-    handleLogin = e => {
+    // Simplistic handler for login submit
+    handleRegister = (e) => {
         e.preventDefault()
+
+        sessionStorage.setItem(
+            "credentials",
+            JSON.stringify({
+                name: this.state.name,
+                email: this.state.email
+            })
+        )
     }
 
     //create a new object from state which is then posted to JSON and the user is moved backed to the full /owned list
     createNewUser = evt => {
+
         evt.preventDefault()
 
-        // if (this.state.newName === "" || this.state.newUser === "") {
-        //     alert("Please fill out all fields.")
-        // } else {
-
         const newUser = {
-            newName: this.state.name,
-            newEmail: this.state.email
+            name: this.state.name,
+            email: this.state.email
         }
 
-    // Add the user to the "users" JSON and redirect to homepage
-    this.props.postNewUser(newUser)
-        .then(() => this.props.history.push("/home"))
+        console.log("posted to API", newUser)
 
+        // Add the user to the "users" JSON and redirect to homepage
+        this.props.postNewUser(newUser)
+            .then( (r => {
+                console.log(r)
+                this.props.history.push("/home")
+            }))
         }
 
     render () {
-        console.log(this.state.name)
+        console.log("name", this.state.name, "email", this.state.email)
         return (
             <React.Fragment>
                 <div className="welcome--container">
-                    <h1> Welcome to Cave</h1>
-                    <p>Get together. Get outside. Get your shit back.</p>
+                    <h1> Glad to have you join us.</h1>
+                    <p>Your friends are too.</p>
                 </div>
                 <div className="registration--container">
                     <form onSubmit={this.handleLogin}>
@@ -57,7 +66,7 @@ export default class Registration extends Component {
                             id="name"
                             placeholder="Name"
                             required="" autoFocus="" />
-                        <label htmlFor="email">
+                        <label htmlFor="inputEmail">
                             Email
                         </label>
                         <input onChange={this.handleFieldChange} type="email"

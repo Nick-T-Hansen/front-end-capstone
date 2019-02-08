@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
 export default class Login extends Component {
 
     // set state
@@ -19,15 +20,30 @@ export default class Login extends Component {
     handleLogin = e => {
         e.preventDefault();
 
-    //store user login in local storage (session storage)
+        //  setting username in session storage.
         sessionStorage.setItem(
-            "credentials",
-            JSON.stringify({
-                name: this.state.name,
-                email: this.state.email
-            })
-        );
-    }
+            "name",
+            this.state.name
+        )
+
+        //compare the possible user trying to login to the array of users who have registered and are stored in the users API. If the user passes the authentication, the userId is set and used to render all pages.
+        let possibleUser = sessionStorage.getItem("name")
+        let authenticated = this.props.users.find(user => user.name === possibleUser)
+
+        console.log("props", this.props)
+        console.log("authenticated", authenticated)
+        console.log("session storage", sessionStorage)
+
+        if (authenticated === undefined){
+            alert("Grump Cat says 'Nope!' Try again or create an account")
+        }
+
+        else {
+        sessionStorage.setItem("userId",authenticated.id)
+        // this.props.updateComponent()
+        this.props.history.push("/home")
+        }
+}
 
     render () {
         return (
@@ -53,16 +69,14 @@ export default class Login extends Component {
                             id="email"
                             placeholder="Email"
                             required="" />
-                        <button type="submit"
-                                onClick>
-                            Sign in
+                        <button type="btn submit"
+                                onClick = {this.handleLogin}
+                            >Sign in
                         </button>
                     </form>
-                    <Link className="login--nav--link" to={`/new`}>I'm new here, sign me up!</Link>
+                    <Link className="login--nav--link" to={`/register`}>I'm new here, sign me up!</Link>
                 </div>
             </React.Fragment>
         )
-
     }
-
 }
