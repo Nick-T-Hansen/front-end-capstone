@@ -62,7 +62,6 @@ export default class ApplicationViews extends Component {
       })
     }
 
-
   // OTHER FETCH CALLS
 
   postNewUser = (newUser) =>{

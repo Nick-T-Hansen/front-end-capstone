@@ -6,16 +6,28 @@ export default class Homepage extends Component {
         return (
             <React.Fragment>
                 <div className=" row homepage--container">
+                </div>
                 <h1> Welcome back, {sessionStorage.getItem("name")}</h1>
-                    <div className="home--link--container col-sm-4">
+                <div className="row">
+                    <div className="col">.col</div>
+                    <div className="col">.col
                         <Link className="home--nav--link" to={`/owned`}>Owned</Link>
                     </div>
-                        <div className="home--link--container col-sm-4">
-                    <Link className="home--nav--link" to={`/shared`}>Shared</Link>
+                    <div className="col">.col</div>
+                </div>
+                <div className="row">
+                    <div className="col">.col</div>
+                    <div className="col">.col
+                        <Link className="home--nav--link" to={`/shared`}>Shared</Link>
                     </div>
-                        <div className="home--link--container col-sm-4">
-                    <Link className="home--nav--link" to={`/borrowed`}>Borrowed</Link>
-                    </div>
+                    <div className="col">.col</div>
+                </div>
+                <div className="row">
+                    <div className="col">.col</div>
+                    <div className="col">.col
+                        <Link className="home--nav--link" to={`/borrowed`}>Borrowed</Link>
+                        </div>
+                    <div className="col">.col</div>
                 </div>
             </React.Fragment>
         )
