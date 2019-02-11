@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 export default class Registration extends Component {
     // set state
@@ -19,13 +18,13 @@ export default class Registration extends Component {
     handleRegister = (e) => {
         e.preventDefault()
 
-        sessionStorage.setItem(
-            "credentials",
-            JSON.stringify({
-                name: this.state.name,
-                email: this.state.email
-            })
-        )
+        // sessionStorage.setItem(
+        //     "credentials",
+        //     JSON.stringify({
+        //         name: this.state.name,
+        //         email: this.state.email
+        //     })
+        // )
     }
 
     //create a new object from state which is then posted to JSON and the user is moved backed to the full /owned list

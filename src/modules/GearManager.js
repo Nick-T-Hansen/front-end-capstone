@@ -1,6 +1,20 @@
 const remoteURL = "http://localhost:5002"
 
 export default {
+    //GET expanded all (gear-user,class,quality)
+    getAllGearExpanded() {
+        let sessionUser = sessionStorage.getItem("userId")
+        let sessionUserId = Number(sessionUser)
+        console.log("userId", sessionUserId)
+        return fetch(`${remoteURL}/gearItems?userId=${sessionUserId}&_expand=gearQuality&_expand=gearClass`)
+        .then(e => e.json())
+        //
+    },
+    getSharedGearArray() {
+        return fetch(`${remoteURL}/gearItems?shared=true&_expand=gearQuality&_expand=gearClass`)
+        .then(e => e.json())
+        //
+    },
     //GET all gearItems
     getAllGearItems() {
         return fetch(`${remoteURL}/gearItems`).then(e => e.json())
@@ -13,15 +27,7 @@ export default {
     getAllGearItemsAndQualities() {
         return fetch(`${remoteURL}/gearItems?_expand=gearQuality&_expand=gearClass`).then(e => e.json())
     },
-    //GET expanded all (gear-user,class,quality)
-    getAllGearExpanded() {
-        let sessionUser = sessionStorage.getItem("userId")
-        let sessionUserId = Number(sessionUser)
-        console.log("userId", sessionUserId)
-        return fetch(`${remoteURL}/gearItems?userId=${sessionUserId}&_expand=gearQuality&_expand=gearClass`)
-        .then(e => e.json())
-        //
-    },
+
     //GET all gear classes for addForm dropdown
     getAllGearClasses() {
         return fetch(`${remoteURL}/gearClasses`).then(e => e.json())
