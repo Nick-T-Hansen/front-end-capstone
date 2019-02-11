@@ -6,7 +6,7 @@ export default class GearDetails extends Component {
     render() {
         const gear = this.props.gearItems.find(
             a => a.id === parseInt(this.props.match.params.gearItemId)) || {};
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <div key={gear.id} className="details--container">
                 <div className="details--entry">
