@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import OwnCards from "../ownList/ownCards"
+import SharedCard from "./SharedCard"
 
 export default class OwnList extends Component {
     render() {
@@ -11,8 +11,8 @@ export default class OwnList extends Component {
                     <div className="row">
                         1 of 2
                         <div className="col card-container">
-                            {this.props.gearItems.map(gearItem =>
-                                <OwnCards key={gearItem.id} gearItem={gearItem} {...this.props} />
+                            {this.props.sharedItems.map(sharedItem =>
+                                <SharedCard key={sharedItem.id} sharedItem={sharedItem} {...this.props} />
                             )
                             }
                         </div>

@@ -144,7 +144,7 @@ export default class ApplicationViews extends Component {
 
           <Route
           exact path="/shared" render={props => {
-            return ( <SharedList {...props} gearItems={this.state.sharedItems} updateComponent={this.updateComponent} />)
+            return ( <SharedList {...props} sharedItems={this.state.sharedItems} updateComponent={this.updateComponent} />)
           }}
         />
       </React.Fragment>
