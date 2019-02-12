@@ -67,6 +67,11 @@ export default class ApplicationViews extends Component {
 
   postNewUser = (newUser) =>{
     return GearManager.postNewUser(newUser)
+    .then(() => GearManager.getAllUsers()).then(r => {
+      this.setState({
+        users: r
+      })
+    })
   }
 //switched geatAllGearItemsAndQualities to .getAllGearExpanded
   postNewGear = (newGearItemObject) =>{
@@ -75,7 +80,7 @@ export default class ApplicationViews extends Component {
   .then(r => this.setState({
       gearItems: r
       })
-    )
+  )
   }
 
   deleteExistingGear = (id) =>{
