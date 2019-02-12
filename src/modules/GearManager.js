@@ -76,6 +76,15 @@ export default {
             body: JSON.stringify(eventObject)
         }).then(data => data.json());
         },
+        patch(gearId, patchBoolean) {
+            return fetch(`${remoteURL}/gearItems/${gearId}`, {
+                method: "PATCH",
+                headers: {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(patchBoolean)
+            }).then(data => data.json());
+            },
     //DELETE a gear item in the GearDetails page which deletes the item from the JSON
     deleteGearItem(id) {
         return fetch(`${remoteURL}/gearItems/${id}`, {

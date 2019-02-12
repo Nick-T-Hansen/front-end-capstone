@@ -7,14 +7,23 @@ import "./OwnList.css"
 export default class OwnCard extends Component {
 
     shareButtonEL = () => {
-        console.log("share click")
-    //     let updateGear = this.props.gearItem;
-    //     updateGear.shared = true
-    //     console.log("this item is now true", this.props.gearItem)
-    }
+
+            const editGearItemObject = {
+                gearName: this.props.gearItem.gearName,
+                userId: Number(sessionStorage.getItem("userId")),
+                gearQualityId: Number(this.props.gearItem.gearQualityId),
+                gearClassId: Number(this.props.gearItem.gearClassId),
+                notes: this.props.gearItem.notes,
+                borrowedUserId: this.props.gearItem.borrowedUserId,
+                shared: true
+            }
+
+            this.props.updateGear(this.props.gearItem.id, editGearItemObject)
+            alert(`${this.props.gearItem.gearName} has been shared with others`)
+            // .then(() => this.props.history.push("/owned"))
+        }
 
     detailsButtonEL = () => {
-        console.log("details click")
         this.props.history.push(`/${this.props.gearItem.id}/details`)
     }
     render() {
