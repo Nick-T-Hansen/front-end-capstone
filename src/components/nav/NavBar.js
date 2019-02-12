@@ -7,8 +7,11 @@ import "./NavBar.css"
 
 class NavBar extends Component {
 
-    // logout = () => {
-    //     sessionStorage.clear()
+    logout = () => {
+        console.log("logout clicked")
+        window.sessionStorage.removeItem("userId")
+        document.location.href ="/"
+    }
 
     render() {
         return (
@@ -29,10 +32,7 @@ class NavBar extends Component {
                     <li className="nav-item">
                         <Link className="nav-link" to="/borrowed">Borrowed</Link>
                     </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/"
-                        >Log Out</Link>
-                    </li>
+                    <button type="submit" onClick={this.logout}  className="nav-item btn btn-nav-logout">Logout</button>
                 </ul>
             </nav>
         )
