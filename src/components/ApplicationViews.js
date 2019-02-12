@@ -85,6 +85,11 @@ export default class ApplicationViews extends Component {
     gearItems: r
     })
     )
+    .then(() => GearManager.getSharedGearArray()).then(r => {
+      this.setState({
+        sharedItems: r
+      })
+    })
   }
 
   updateGear = (gearId, editGearObject) => {
@@ -92,9 +97,27 @@ export default class ApplicationViews extends Component {
     .then(() => GearManager.getAllGearExpanded())
     .then(r => {
       this.setState({
+        gearItems: r,
+        sharedItems: r
+      })
+    })
+    .then(() => GearManager.getSharedGearArray()).then(r => {
+      this.setState({
+        sharedItems: r
+      })
+    })
+  }
+
+
+
+  patchGear = (gearId, booleanToChange) => {
+    return GearManager.patch(gearId, booleanToChange)
+    .then(() => GearManager.getAllGearExpanded())
+    .then (r => {
+      this.setState({
         gearItems: r
       })
-    });
+    })
   }
 
   render() {
@@ -120,7 +143,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/owned" render={props => {
-            return ( <OwnList {...props} gearItems={this.state.gearItems} updateComponent={this.updateComponent} />)
+            return ( <OwnList {...props} gearItems={this.state.gearItems} updateComponent={this.updateComponent} updateGear={this.updateGear} />)
           }}
         />
 
@@ -144,7 +167,7 @@ export default class ApplicationViews extends Component {
 
           <Route
           exact path="/shared" render={props => {
-            return ( <SharedList {...props} sharedItems={this.state.sharedItems} updateComponent={this.updateComponent} />)
+            return ( <SharedList {...props} sharedItems={this.state.sharedItems} updateComponent={this.updateComponent} updateGear={this.updateGear} />)
           }}
         />
 

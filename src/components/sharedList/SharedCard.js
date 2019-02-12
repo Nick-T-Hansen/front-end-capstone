@@ -11,7 +11,7 @@ export default class OwnCard extends Component {
         if (this.props.sharedItem.userId == usersGear) {
             return(
             <React.Fragment>
-                <button type="submit" onClick={this.shareButtonEL}  className="btn btn-card--share">Unshare</button>
+                <button type="submit" onClick={this.UnshareButtonEL}  className="btn btn-card--share">Unshare</button>
                 <Link className="card--nav--link" to={`/${this.props.sharedItem.id}/geardetails`}>Details</Link>
             </React.Fragment> )}
         else {
@@ -22,6 +22,22 @@ export default class OwnCard extends Component {
             </React.Fragment>)}
         }
 
+        UnshareButtonEL = () => {
+
+            const editGearItemObject = {
+                gearName: this.props.sharedItem.gearName,
+                userId: Number(sessionStorage.getItem("userId")),
+                gearQualityId: Number(this.props.sharedItem.gearQualityId),
+                gearClassId: Number(this.props.sharedItem.gearClassId),
+                notes: this.props.sharedItem.notes,
+                borrowedUserId: this.props.sharedItem.borrowedUserId,
+                shared: false
+            }
+
+            this.props.updateGear(this.props.sharedItem.id, editGearItemObject)
+            alert(`${this.props.sharedItem.gearName} has been removed from the shared list`)
+            // .then(() => this.props.history.push("/shared"))
+        }
     render() {
 
         console.log("get shared item from JSON", this.props.sharedItem)

@@ -8,7 +8,8 @@ export default class EditForm extends Component {
         editGearName: "",
         editGearQualityId: "0",
         editGearClassId: "0",
-        editNotes: ""
+        editNotes: "",
+        shared: ""
     }
 
 
@@ -35,7 +36,7 @@ export default class EditForm extends Component {
                 gearClassId: Number(this.state.editGearClassId),
                 notes: this.state.editNotes,
                 borrowedUserId: "",
-                shared: false
+                shared: this.state.shared
             }
 
             this.props.updateGear(this.props.match.params.gearItemId, editGearItemObject)
@@ -46,12 +47,13 @@ export default class EditForm extends Component {
     //component which calls my fetch module
     componentDidMount() {
         GearManager.getGearItem(this.props.match.params.gearItemId)
-        .then(gear => { console.log(gear)
+        .then(gear => {
             this.setState({
                 editGearName: gear.gearName,
                 editGearQualityId: gear.gearQualityId,
                 editGearClassId: gear.gearClassId,
-                editNotes: gear.notes
+                editNotes: gear.notes,
+                shared: gear.shared
             });
         });
         }
