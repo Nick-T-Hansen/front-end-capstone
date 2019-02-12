@@ -9,6 +9,7 @@ import EditForm from "./ownList/EditForm";
 import Login from "../components/authentication/Login"
 import Registration from "../components/authentication/Registration"
 import SharedList from "./sharedList/SharedList"
+import SharedGearDetails from "./sharedList/SharedGearDetails"
 
 
 export default class ApplicationViews extends Component {
@@ -144,6 +145,12 @@ export default class ApplicationViews extends Component {
           <Route
           exact path="/shared" render={props => {
             return ( <SharedList {...props} sharedItems={this.state.sharedItems} updateComponent={this.updateComponent} />)
+          }}
+        />
+
+          <Route
+          path="/:sharedItemId(\d+)/geardetails" render={props => {
+            return ( <SharedGearDetails {...props} sharedItems={this.state.sharedItems} />)
           }}
         />
       </React.Fragment>

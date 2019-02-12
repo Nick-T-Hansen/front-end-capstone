@@ -9,14 +9,16 @@ export default class OwnCard extends Component {
     renderOwnerCard = () => {
         let usersGear = sessionStorage.getItem("userId")
         if (this.props.sharedItem.userId == usersGear) {
-            return(<React.Fragment>
-            <Link className="card--nav--link" to={`/${this.props.sharedItem.id}/details`}>Details</Link>
-            <Link className="card--nav--link" to={`/${this.props.sharedItem.id}/details`}>Remove</Link>
+            return(
+            <React.Fragment>
+                <button type="submit" onClick={this.shareButtonEL}  className="btn btn-card--share">Unshare</button>
+                <Link className="card--nav--link" to={`/${this.props.sharedItem.id}/geardetails`}>Details</Link>
             </React.Fragment> )}
         else {
-            return(<React.Fragment>
-            <Link className="card--nav--link" to={`/${this.props.sharedItem.id}/details`}>Details</Link>
-            <Link className="card--nav--link" to={`/${this.props.sharedItem.id}/details`}>Book It</Link>
+            return(
+            <React.Fragment>
+                <button type="submit" onClick={this.shareButtonEL}  className="btn btn-card--share">Book It</button>
+                <Link className="card--nav--link" to={`/${this.props.sharedItem.id}/geardetails`}>Details</Link>
             </React.Fragment>)}
         }
 
@@ -26,13 +28,15 @@ export default class OwnCard extends Component {
         return (
             <React.Fragment>
                 <section key={this.props.sharedItem.id} className="card">
-                    <section className="sharedItem--card">
+                    <div className="sharedItem--card">
                         <h2>{this.props.sharedItem.gearName}</h2>
-                    </section>
+                    </div>
                     <section className="card--links--container">
                         <article className="card--link--article">
-                            {this.renderOwnerCard()}
                         </article>
+                    <div className="button-container">
+                    {this.renderOwnerCard()}
+                    </div>
                     </section>
                 </section>
             </React.Fragment>

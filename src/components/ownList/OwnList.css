@@ -1,11 +1,22 @@
 .OwnList--container {
     display: flex;
     justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .card {
+    display: flex;
+    justify-content: space-evenly;
     text-align: center;
-    width: 12rem;
-    height: 15rem;
+
+    border-color: gray;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 14rem;
+    height: 17rem;
+    margin-top: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
 }
 
