@@ -1,12 +1,12 @@
 //expanded view of a piece of gears details. From here, a user can edit or delete the gear
 import React, { Component } from "react"
-export default class GearDetails extends Component {
+export default class SharedGearDetails extends Component {
 
 
     render() {
-        const gear = this.props.gearItems.find(
-            a => a.id === parseInt(this.props.match.params.gearItemId)) || {};
-        // console.log(this.props)
+        const gear = this.props.sharedItems.find(
+            a => a.id === parseInt(this.props.match.params.sharedItemId)) || {};
+        console.log(this.props.match.params.sharedItemId)
         return (
             <div key={gear.id} className="details--container">
                 <div className="details--entry">
@@ -26,12 +26,8 @@ export default class GearDetails extends Component {
                 </div>
                 <div className="details--links--container">
                     <button className="btn btn--edit--gear"
-                            onClick={() => this.props.history.push(`/${gear.id}/edit`)}
-                            >Edit</button>
-                    <button className="btn btn--delete--gear"
-                            onClick={() => this.props.deleteExistingGear(gear.id)
-                                .then(() => this.props.history.push("/owned"))}
-                            >Delete</button>
+                            onClick={() => this.props.history.push(`/shared`)}
+                            >Go Back</button>
                 </div>
             </div>
         )
