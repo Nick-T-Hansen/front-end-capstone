@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import SharedCard from "./SharedCard"
 
+//shared list diplays all gearItems which have the boolean set to "true", regardless of userId. Cards will be created using .map to loop over the gearItem array.
 export default class OwnList extends Component {
     render() {
         return (

@@ -53,9 +53,8 @@ export default class ApplicationViews extends Component {
     })
   }
 
-    // UPDATING ALL PAGES SPECFIC TO USER (resetting state after you login with a different user)
-    updateComponent = () => {
 
+    updateComponent = () => {
       GearManager.getAllGearExpanded().then(r => {
         this.setState({
         gearItems: r
@@ -63,9 +62,7 @@ export default class ApplicationViews extends Component {
       })
     }
 
-  // OTHER FETCH CALLS
-
-  postNewUser = (newUser) =>{
+  postNewUser = (newUser) => {
     return GearManager.postNewUser(newUser)
     .then(() => GearManager.getAllUsers()).then(r => {
       this.setState({
@@ -73,8 +70,8 @@ export default class ApplicationViews extends Component {
       })
     })
   }
-//switched geatAllGearItemsAndQualities to .getAllGearExpanded
-  postNewGear = (newGearItemObject) =>{
+
+  postNewGear = (newGearItemObject) => {
     return GearManager.post(newGearItemObject)
   .then(() => GearManager.getAllGearExpanded())
   .then(r => this.setState({
@@ -83,7 +80,7 @@ export default class ApplicationViews extends Component {
   )
   }
 
-  deleteExistingGear = (id) =>{
+  deleteExistingGear = (id) => {
     return GearManager.deleteGearItem(id)
   .then (() => GearManager.getAllGearExpanded())
   .then(r => this.setState({

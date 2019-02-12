@@ -23,23 +23,55 @@ export default class OwnCard extends Component {
             // .then(() => this.props.history.push("/owned"))
         }
 
+        UnshareButtonEL = () => {
+
+            const editGearItemObject = {
+                gearName: this.props.gearItem.gearName,
+                userId: Number(sessionStorage.getItem("userId")),
+                gearQualityId: Number(this.props.gearItem.gearQualityId),
+                gearClassId: Number(this.props.gearItem.gearClassId),
+                notes: this.props.gearItem.notes,
+                borrowedUserId: this.props.gearItem.borrowedUserId,
+                shared: false
+            }
+
+            this.props.updateGear(this.props.gearItem.id, editGearItemObject)
+            // .then(() => this.props.history.push("/owned"))
+        }
     detailsButtonEL = () => {
         this.props.history.push(`/${this.props.gearItem.id}/details`)
     }
     render() {
-        console.log("get", this.props.gearItems)
-        return (
+
+        if (this.props.gearItem.shared == true) {
+            return(
             <React.Fragment>
-                <section key={this.props.gearItem.id} className="card">
+                <section key={this.props.gearItem.id} className="card card--private--shared">
                     <div className="gearItem--card">
                         <h2>{this.props.gearItem.gearName}</h2>
                     </div>
                     <div className="button-container">
-                        <button type="submit" onClick={this.shareButtonEL}  className="btn btn-card--share">Share</button>
+                        <p>This item is currently being shared.</p>
+                        <button type="submit" onClick={this.UnshareButtonEL}  className="btn btn-card--share">Unshare</button>
                         <Link className="card--nav--link" to={`/${this.props.gearItem.id}/details`}>Details</Link>
                     </div>
                 </section>
-            </React.Fragment>
-        )
+            </React.Fragment> )}
+        else {
+            console.log("get", this.props.gearItems)
+            return (
+                <React.Fragment>
+                    <section key={this.props.gearItem.id} className="card">
+                        <div className="gearItem--card">
+                            <h2>{this.props.gearItem.gearName}</h2>
+                        </div>
+                        <div className="button-container">
+                            <button type="submit" onClick={this.shareButtonEL}  className="btn btn-card--share">Share</button>
+                            <Link className="card--nav--link" to={`/${this.props.gearItem.id}/details`}>Details</Link>
+                        </div>
+                    </section>
+                </React.Fragment>
+            )
+        }
     }
 }

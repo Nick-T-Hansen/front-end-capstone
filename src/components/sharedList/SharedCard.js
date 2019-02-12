@@ -1,8 +1,7 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom";
 
-
-//each piece of gear will have its own card under the owners OWN list. These cards will allow a user to view the gear details and add it to the SHARE list.
+//individual cards which are looped and created for the shared list. Depending on the userId, a different button set is created with each card.
 export default class OwnCard extends Component {
 
     //logic to render either the buttons for the gear owner (details and remove) or buttons for another user (details and book)
@@ -22,6 +21,7 @@ export default class OwnCard extends Component {
             </React.Fragment>)}
         }
 
+        //edits the gearItem boolean based on id and removes it from the shared list when the "unshare" button is clicked
         UnshareButtonEL = () => {
 
             const editGearItemObject = {
@@ -36,8 +36,8 @@ export default class OwnCard extends Component {
 
             this.props.updateGear(this.props.sharedItem.id, editGearItemObject)
             alert(`${this.props.sharedItem.gearName} has been removed from the shared list`)
-            // .then(() => this.props.history.push("/shared"))
         }
+
     render() {
 
         console.log("get shared item from JSON", this.props.sharedItem)

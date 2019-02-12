@@ -1,7 +1,8 @@
-//expanded view of a piece of gears details. From here, a user can edit or delete the gear
+
 import React, { Component } from "react"
 export default class GearDetails extends Component {
 
+    //expanded view of a piece of gears details. From here, a user can edit or delete the gear in their private list
 
     render() {
         const gear = this.props.gearItems.find(
