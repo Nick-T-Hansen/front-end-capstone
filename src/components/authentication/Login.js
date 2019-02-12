@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 
 export default class Login extends Component {
 
+    static navigationOptions = {
+        header: null,
+        title: 'Login',
+        };
+
     // set state
     state = {
         name: "",

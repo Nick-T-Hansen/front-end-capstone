@@ -6,6 +6,10 @@ import "./NavBar.css"
 
 
 class NavBar extends Component {
+
+    // logout = () => {
+    //     sessionStorage.clear()
+
     render() {
         return (
             <nav className="navbar navbar-inverse">
@@ -26,13 +30,13 @@ class NavBar extends Component {
                         <Link className="nav-link" to="/borrowed">Borrowed</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/">Log Out</Link>
+                        <Link className="nav-link" to="/"
+                        >Log Out</Link>
                     </li>
                 </ul>
             </nav>
         )
     }
 }
-
 
 export default NavBar

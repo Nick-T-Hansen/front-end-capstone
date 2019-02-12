@@ -50,10 +50,12 @@ export default class OwnCard extends Component {
                     <div className="gearItem--card">
                         <h2>{this.props.gearItem.gearName}</h2>
                     </div>
+                    <div className="card-message">
+                    <p>This item is currently being shared.</p>
+                    </div>
                     <div className="button-container">
-                        <p>This item is currently being shared.</p>
                         <button type="submit" onClick={this.UnshareButtonEL}  className="btn btn-card--share">Unshare</button>
-                        <Link className="card--nav--link" to={`/${this.props.gearItem.id}/details`}>Details</Link>
+                        <Link className="btn card--nav--link" to={`/${this.props.gearItem.id}/details`}>Details</Link>
                     </div>
                 </section>
             </React.Fragment> )}
@@ -67,7 +69,7 @@ export default class OwnCard extends Component {
                         </div>
                         <div className="button-container">
                             <button type="submit" onClick={this.shareButtonEL}  className="btn btn-card--share">Share</button>
-                            <Link className="card--nav--link" to={`/${this.props.gearItem.id}/details`}>Details</Link>
+                            <Link className="btn card--nav--link" to={`/${this.props.gearItem.id}/details`}>Details</Link>
                         </div>
                     </section>
                 </React.Fragment>

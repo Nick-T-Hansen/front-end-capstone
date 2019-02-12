@@ -10,6 +10,7 @@ import Login from "../components/authentication/Login"
 import Registration from "../components/authentication/Registration"
 import SharedList from "./sharedList/SharedList"
 import SharedGearDetails from "./sharedList/SharedGearDetails"
+import NavBar from "./nav/NavBar"
 
 
 export default class ApplicationViews extends Component {
@@ -121,6 +122,14 @@ export default class ApplicationViews extends Component {
       })
     })
   }
+
+  // authentication for navbar
+  // isAuthenticated = () => sessionStorage.getItem("User") !== null
+  // showNav() {
+  //     if (this.isAuthenticated()) {
+  //         return <NavBar />
+  //     }
+  //   }
 
   render() {
     return (

@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { Link } from "react-router-dom";
 
 //individual cards which are looped and created for the shared list. Depending on the userId, a different button set is created with each card.
-export default class OwnCard extends Component {
+export default class BorrowedCard extends Component {
 
     //logic to render either the buttons for the gear owner (details and remove) or buttons for another user (details and book)
     renderOwnerCard = () => {
@@ -16,13 +16,13 @@ export default class OwnCard extends Component {
         else {
             return(
             <React.Fragment>
-                <button type="submit" onClick={this.shareButtonEL}  className="btn btn-card--share">Book It</button>
+                <button type="submit" onClick={this.shareButtonEL}  className="btn btn-card--borrowed">Return It</button>
                 <Link className="btn card--nav--link" to={`/${this.props.sharedItem.id}/geardetails`}>Details</Link>
             </React.Fragment>)}
         }
 
-        //edits the gearItem boolean based on id and removes it from the shared list when the "unshare" button is clicked
-        UnshareButtonEL = () => {
+        //edits the gearItem borrowedUserId and removes it from the shared list when the "Return It" button is clicked
+        returnButtonEL = () => {
 
             const editGearItemObject = {
                 gearName: this.props.sharedItem.gearName,
@@ -30,8 +30,8 @@ export default class OwnCard extends Component {
                 gearQualityId: Number(this.props.sharedItem.gearQualityId),
                 gearClassId: Number(this.props.sharedItem.gearClassId),
                 notes: this.props.sharedItem.notes,
-                borrowedUserId: this.props.sharedItem.borrowedUserId,
-                shared: false
+                borrowedUserId: "",
+                shared: this.props.sharedItem.shared
             }
 
             this.props.updateGear(this.props.sharedItem.id, editGearItemObject)
@@ -47,13 +47,14 @@ export default class OwnCard extends Component {
                     <div className="sharedItem--card">
                         <h2>{this.props.sharedItem.gearName}</h2>
                     </div>
-                    <section className="card--links--container">
-                        <article className="card--link--article">
-                        </article>
-                    <div className="button-container">
-                    {this.renderOwnerCard()}
+
+                    <div className="card-message">
+                        <p>This item is owned by .</p>
                     </div>
-                    </section>
+                    <div className="button-container">
+                        <button type="submit" onClick={this.returnButtonEL}  className="btn btn-card--borrowed">Return It</button>
+                        <Link className="btn card--nav--link" to={`/${this.props.sharedItem.id}/geardetails`}>Details</Link>
+                    </div>
                 </section>
             </React.Fragment>
         )
