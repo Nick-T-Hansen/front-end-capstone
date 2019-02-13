@@ -103,7 +103,7 @@ export default class ApplicationViews extends Component {
       })
     })
   }
-
+//update gear for shared list
   updateGear = (gearId, editGearObject) => {
     return GearManager.put(gearId, editGearObject)
     .then(() => GearManager.getAllGearExpanded())
@@ -116,10 +116,11 @@ export default class ApplicationViews extends Component {
     .then(() => GearManager.getSharedGearArray()).then(r => {
       this.setState({
         sharedItems: r,
+
       })
     })
   }
-
+//update gear for borrowed list (not updating auto, need to refresh)--------------------------TO DO-------------
   updateBookedGear = (gearId, editGearObject) => {
     return GearManager.put(gearId, editGearObject)
     .then(() => GearManager.getBookedGear())
@@ -131,11 +132,11 @@ export default class ApplicationViews extends Component {
     })
     .then(() => GearManager.getSharedGearArray()).then(r => {
       this.setState({
-        bgearItems: r,
+        sharedItems: r
       })
     })
   }
-
+  //patch to update just the boolean value in a gear object
   patchGear = (gearId, booleanToChange) => {
     return GearManager.patch(gearId, booleanToChange)
     .then(() => GearManager.getAllGearExpanded())
@@ -244,7 +245,7 @@ export default class ApplicationViews extends Component {
           <Route
           path="/borrowed" render={props => {
             if (this.isAuthenticated()) {
-            return ( <BorrowedList {...props} borrowedItems={this.state.borrowedItems} sharedItems={this.state.sharedItems}updateComponent={this.updateComponent} updateBookedGear={this.updateBookedGear} />)
+            return ( <BorrowedList {...props} borrowedItems={this.state.borrowedItems} updateComponent={this.updateComponent} updateBookedGear={this.updateBookedGear} />)
             } else {
               alert("Please log in to continue")
               return <Redirect to="/" />
