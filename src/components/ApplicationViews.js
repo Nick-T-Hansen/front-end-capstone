@@ -25,13 +25,15 @@ export default class ApplicationViews extends Component {
   }
 
   componentDidMount() {
-    GearManager.getSharedGearArray().then(r => {
+    GearManager.getSharedGearArray()
+    .then(r => {
       this.setState({
         sharedItems: r
       })
     })
 
-    GearManager.getAllGearExpanded().then(r => {
+    GearManager.getAllGearExpanded()
+    .then(r => {
       this.setState({
       gearItems: r
       })
@@ -44,28 +46,31 @@ export default class ApplicationViews extends Component {
       })
     })
 
-    GearManager.getAllGearClasses().then(r => {
+    GearManager.getAllGearClasses()
+    .then(r => {
       this.setState({
       gearClasses: r
       })
     })
 
-    GearManager.getAllGearQualities().then(r => {
+    GearManager.getAllGearQualities()
+    .then(r => {
       this.setState({
       gearQualities: r
       })
     })
 
-    GearManager.getAllUsers().then(r => {
+    GearManager.getAllUsers()
+    .then(r => {
       this.setState({
         users: r
       })
     })
   }
 
-
     updateComponent = () => {
-      GearManager.getAllGearExpanded().then(r => {
+      GearManager.getAllGearExpanded()
+      .then(r => {
         this.setState({
         gearItems: r
         })
@@ -74,7 +79,8 @@ export default class ApplicationViews extends Component {
 
   postNewUser = (newUser) => {
     return GearManager.postNewUser(newUser)
-    .then(() => GearManager.getAllUsers()).then(r => {
+    .then(() => GearManager.getAllUsers())
+    .then(r => {
       this.setState({
         users: r
       })
@@ -87,8 +93,7 @@ export default class ApplicationViews extends Component {
   .then(r => this.setState({
       gearItems: r
       })
-  )
-  }
+  )}
 
   deleteExistingGear = (id) => {
     return GearManager.deleteGearItem(id)
@@ -97,7 +102,8 @@ export default class ApplicationViews extends Component {
     gearItems: r
     })
     )
-    .then(() => GearManager.getSharedGearArray()).then(r => {
+    .then(() => GearManager.getSharedGearArray())
+    .then(r => {
       this.setState({
         sharedItems: r
       })
@@ -113,10 +119,11 @@ export default class ApplicationViews extends Component {
         sharedItems: r,
       })
     })
-    .then(() => GearManager.getSharedGearArray()).then(r => {
+    .then(() => GearManager.getSharedGearArray())
+    .then(r => {
       this.setState({
         sharedItems: r,
-
+        // gearItems: r
       })
     })
   }
@@ -127,9 +134,11 @@ export default class ApplicationViews extends Component {
     .then(r => {
       console.log("update booked gear", r)
       this.setState({
-        borrowedItems: r
+        borrowedItems: r,
+        gearItems: r
       })
     })
+    //necessary to refresh the shared list after removed from a users borrowed list. page does not update without this.
     .then(() => GearManager.getSharedGearArray()).then(r => {
       this.setState({
         sharedItems: r
