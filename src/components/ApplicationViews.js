@@ -11,6 +11,7 @@ import Registration from "../components/authentication/Registration"
 import SharedList from "./sharedList/SharedList"
 import SharedGearDetails from "./sharedList/SharedGearDetails"
 import NavBar from "./nav/NavBar"
+import BorrowedList from "./borrowedList/BorowedList"
 
 
 export default class ApplicationViews extends Component {
@@ -19,7 +20,8 @@ export default class ApplicationViews extends Component {
     gearItems: [],
     gearQualities: [],
     gearClasses: [],
-    sharedItems: []
+    sharedItems: [],
+    borrowedItems: []
   }
 
   componentDidMount() {
@@ -32,6 +34,12 @@ export default class ApplicationViews extends Component {
     GearManager.getAllGearExpanded().then(r => {
       this.setState({
       gearItems: r
+      })
+    })
+
+    GearManager.getBookedGear().then(r => {
+      this.setState({
+      borrowedItems: r
       })
     })
 
@@ -101,7 +109,8 @@ export default class ApplicationViews extends Component {
     .then(r => {
       this.setState({
         gearItems: r,
-        sharedItems: r
+        sharedItems: r,
+        bookedItems: r
       })
     })
     .then(() => GearManager.getSharedGearArray()).then(r => {
@@ -111,7 +120,22 @@ export default class ApplicationViews extends Component {
     })
   }
 
-
+  updateBookedGear = (gearId, editGearObject) => {
+    return GearManager.put(gearId, editGearObject)
+    .then(() => GearManager.getAllGearExpanded())
+    .then(r => {
+      this.setState({
+        gearItems: r,
+        sharedItems: r,
+        bookedItems: r
+      })
+    })
+    .then(() => GearManager.getBookedGear()).then(r => {
+      this.setState({
+        bookedItems: r
+      })
+    })
+  }
 
   patchGear = (gearId, booleanToChange) => {
     return GearManager.patch(gearId, booleanToChange)
@@ -151,7 +175,7 @@ export default class ApplicationViews extends Component {
             if (this.isAuthenticated()) {
             return (<Homepage {...props}  />)
           } else {
-            alert(" XXPlease log in to continue")
+            alert(" Please log in to continue")
             return <Redirect to="/" />
             }
           }}
@@ -223,16 +247,16 @@ export default class ApplicationViews extends Component {
           }}
         />
 
-          {/* <Route
+          <Route
           path="/borrowed" render={props => {
             if (this.isAuthenticated()) {
-            return ( <BorrowedList {...props} sharedItems={this.state.sharedItems} updateComponent={this.updateComponent} updateGear={this.updateGear} />)
+            return ( <BorrowedList {...props} borrowedItems={this.state.borrowedItems} updateComponent={this.updateComponent} updateBookedGear={this.updateGear} />)
             } else {
               alert("Please log in to continue")
               return <Redirect to="/" />
             }
           }}
-        /> */}
+        />
       </React.Fragment>
     );
   }

@@ -31,7 +31,7 @@ export default class OwnCard extends Component {
                 gearQualityId: Number(this.props.gearItem.gearQualityId),
                 gearClassId: Number(this.props.gearItem.gearClassId),
                 notes: this.props.gearItem.notes,
-                borrowedUserId: this.props.gearItem.borrowedUserId,
+                borrowedUserId: "",
                 shared: false
             }
 
@@ -53,7 +53,7 @@ export default class OwnCard extends Component {
                     <div className="card-message">
                     <p>This item is currently being shared.</p>
                     </div>
-                    <div className="button-container">
+                    <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="submit" onClick={this.UnshareButtonEL}  className="btn btn-card--share">Unshare</button>
                         <Link className="btn card--nav--link" to={`/${this.props.gearItem.id}/details`}>Details</Link>
                     </div>

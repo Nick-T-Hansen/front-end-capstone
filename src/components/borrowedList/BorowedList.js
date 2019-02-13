@@ -3,18 +3,20 @@ import BorrowedCard from "./BorrowedCard"
 
 //cards which have been borrowed in the shared list will display here using the borrowed key in the gearItem array.
 export default class OwnList extends Component {
-    render() {
+
+    render = () =>  {
+
         return (
             <React.Fragment>
-                <div className="container sharedList--container">
+                <div className="container borrowedList--container">
                     <div className="row"/>
-                        <h1>Shared Gear</h1>
+                        <h1>Borrowed Gear</h1>
                     <div className="row">
-                        1 of 2
                         <div className="col card-container">
-                            {this.props.sharedItems.map(sharedItem =>
-                                <BorrowedCard key={sharedItem.id} sharedItem={sharedItem} {...this.props} />
+                            {this.props.borrowedItems.map(borrowedItem =>
+                                <BorrowedCard key={borrowedItem.id} borrowedItem={borrowedItem} {...this.props} />
                             )}
+                            {console.log(this.props.borrowedItems)}
                         </div>
                     </div>
             </div>
