@@ -124,7 +124,7 @@ export default class ApplicationViews extends Component {
   }
 
   // authentication for user navigation
-  isAuthenticated = () => sessionStorage.getItem("User") !== null
+  isAuthenticated = () => sessionStorage.getItem("name") !== null
   // showNav() {
   //     if (this.isAuthenticated()) {
   //         return <NavBar />
@@ -147,11 +147,11 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          exact path="/home" render={props => {
+          path="/home" render={props => {
             if (this.isAuthenticated()) {
             return (<Homepage {...props}  />)
           } else {
-            alert("Please log in to continue")
+            alert(" XXPlease log in to continue")
             return <Redirect to="/" />
             }
           }}

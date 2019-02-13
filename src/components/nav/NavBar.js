@@ -9,7 +9,7 @@ class NavBar extends Component {
 
     logout = () => {
         console.log("logout clicked")
-        window.sessionStorage.removeItem("userId")
+        window.sessionStorage.removeItem("name")
         document.location.href ="/"
     }
 
