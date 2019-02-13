@@ -10,6 +10,7 @@ import Login from "../components/authentication/Login"
 import Registration from "../components/authentication/Registration"
 import SharedList from "./sharedList/SharedList"
 import SharedGearDetails from "./sharedList/SharedGearDetails"
+import NavBar from "./nav/NavBar"
 
 
 export default class ApplicationViews extends Component {
@@ -53,9 +54,8 @@ export default class ApplicationViews extends Component {
     })
   }
 
-    // UPDATING ALL PAGES SPECFIC TO USER (resetting state after you login with a different user)
-    updateComponent = () => {
 
+    updateComponent = () => {
       GearManager.getAllGearExpanded().then(r => {
         this.setState({
         gearItems: r
@@ -63,22 +63,25 @@ export default class ApplicationViews extends Component {
       })
     }
 
-  // OTHER FETCH CALLS
-
-  postNewUser = (newUser) =>{
+  postNewUser = (newUser) => {
     return GearManager.postNewUser(newUser)
+    .then(() => GearManager.getAllUsers()).then(r => {
+      this.setState({
+        users: r
+      })
+    })
   }
-//switched geatAllGearItemsAndQualities to .getAllGearExpanded
-  postNewGear = (newGearItemObject) =>{
+
+  postNewGear = (newGearItemObject) => {
     return GearManager.post(newGearItemObject)
   .then(() => GearManager.getAllGearExpanded())
   .then(r => this.setState({
       gearItems: r
       })
-    )
+  )
   }
 
-  deleteExistingGear = (id) =>{
+  deleteExistingGear = (id) => {
     return GearManager.deleteGearItem(id)
   .then (() => GearManager.getAllGearExpanded())
   .then(r => this.setState({
@@ -120,6 +123,14 @@ export default class ApplicationViews extends Component {
     })
   }
 
+  // authentication for user navigation
+  isAuthenticated = () => sessionStorage.getItem("User") !== null
+  // showNav() {
+  //     if (this.isAuthenticated()) {
+  //         return <NavBar />
+  //     }
+  //   }
+
   render() {
     return (
       <React.Fragment>
@@ -137,45 +148,91 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/home" render={props => {
+            if (this.isAuthenticated()) {
             return (<Homepage {...props}  />)
+          } else {
+            alert("Please log in to continue")
+            return <Redirect to="/" />
+            }
           }}
         />
 
         <Route
           exact path="/owned" render={props => {
+            if (this.isAuthenticated()) {
             return ( <OwnList {...props} gearItems={this.state.gearItems} updateComponent={this.updateComponent} updateGear={this.updateGear} />)
+            } else {
+              alert("Please log in to continue")
+              return <Redirect to="/" />
+            }
           }}
         />
 
         <Route
           path="/:gearItemId(\d+)/details" render={props => {
+            if (this.isAuthenticated()) {
             return ( <GearDetails {...props} gearItems={this.state.gearItems} deleteExistingGear={this.deleteExistingGear} />)
-          }}
-        />
+            } else {
+                alert("Please log in to continue")
+                return <Redirect to="/" />
+              }
+            }}
+          />
 
         <Route
           path="/:gearItemId(\d+)/edit" render={props => {
-            return ( <EditForm {...props} gearItems={this.state.gearItems} gearQualities={this.state.gearQualities} gearClasses={this.state.gearClasses} updateGear={this.updateGear} />)
+            if (this.isAuthenticated()) {
+            return ( <EditForm {...props} gearItems={this.state.gearItems} gearQualities={this.state.gearQualities} gearClasses=      {this.state.gearClasses} updateGear={this.updateGear} />)
+            } else {
+              alert("Please log in to continue")
+              return <Redirect to="/" />
+            }
           }}
         />
 
         <Route
           exact path="/add" render={props => {
+            if (this.isAuthenticated()) {
             return ( <AddForm {...props} gearItems={this.state.gearItems} gearQualities={this.state.gearQualities} gearClasses={this.state.gearClasses} postNewGear={this.postNewGear} />)
+            } else {
+              alert("Please log in to continue")
+              return <Redirect to="/" />
+            }
           }}
         />
 
           <Route
           exact path="/shared" render={props => {
+            if (this.isAuthenticated()) {
             return ( <SharedList {...props} sharedItems={this.state.sharedItems} updateComponent={this.updateComponent} updateGear={this.updateGear} />)
+            } else {
+              alert("Please log in to continue")
+              return <Redirect to="/" />
+            }
           }}
         />
 
           <Route
           path="/:sharedItemId(\d+)/geardetails" render={props => {
+            if (this.isAuthenticated()) {
             return ( <SharedGearDetails {...props} sharedItems={this.state.sharedItems} />)
+            } else {
+                alert("Please log in to continue")
+            return <Redirect to="/" />
+            }
           }}
         />
+
+          {/* <Route
+          path="/borrowed" render={props => {
+            if (this.isAuthenticated()) {
+            return ( <BorrowedList {...props} sharedItems={this.state.sharedItems} updateComponent={this.updateComponent} updateGear={this.updateGear} />)
+            } else {
+              alert("Please log in to continue")
+              return <Redirect to="/" />
+            }
+          }}
+        /> */}
       </React.Fragment>
     );
   }

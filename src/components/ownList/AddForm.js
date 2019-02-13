@@ -1,7 +1,7 @@
 //add new gear to a users OWN list
 import React, { Component } from "react"
 
-//need to add quality and class dropdowns to this list. Can I make it auto populate?
+
 export default class AddForm extends Component {
 
     state = {
@@ -42,9 +42,6 @@ export default class AddForm extends Component {
         }
     }
     render() {
-        // console.log("gearClasses array", this.props.gearClasses)
-        // console.log("gearQuality array", this.props.gearQualities)
-        // console.log("gear array", this.props.gearItems)
         return (
             <React.Fragment>
                 <form className="addForm">

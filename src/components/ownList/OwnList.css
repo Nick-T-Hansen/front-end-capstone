@@ -1,16 +1,15 @@
 .OwnList--container {
     display: flex;
     justify-content: space-evenly;
-    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .card {
     display: flex;
     justify-content: space-evenly;
     text-align: center;
-
-    border-color: gray;
+    border-color: black;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     width: 14rem;
     height: 17rem;
@@ -19,4 +18,12 @@
     margin-bottom: 30px;
     margin-left: 30px;
 }
+/* message for private card which is currently shared" */
+.card-message {
+    background-color: gold
+}
 
+/* .button-container {
+    background-color: aqua;
+    align-content: flex-end;
+} */

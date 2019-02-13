@@ -6,12 +6,19 @@ import "./NavBar.css"
 
 
 class NavBar extends Component {
+
+    logout = () => {
+        console.log("logout clicked")
+        window.sessionStorage.removeItem("userId")
+        document.location.href ="/"
+    }
+
     render() {
         return (
             <nav className="navbar navbar-inverse">
                 <ul className="nav nav-pills nav-fill">
-                <li className="nav-item">
-                        <img src={caveLogo} className="nav--cave-logo" alt="cave logo"></img>
+                <li className="navbar-brand">
+                    <img src={caveLogo} className="nav--cave-logo" alt="cave logo"></img>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/home">Home</Link>
@@ -25,6 +32,7 @@ class NavBar extends Component {
                     <li className="nav-item">
                         <Link className="nav-link" to="/borrowed">Borrowed</Link>
                     </li>
+                    <button type="submit" onClick={this.logout}  className="nav-item btn btn-nav-logout">Logout</button>
                 </ul>
             </nav>
         )

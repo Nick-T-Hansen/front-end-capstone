@@ -28,7 +28,6 @@ export default class EditForm extends Component {
             alert("Please select options from the dropdown menus to continue.")
 
         } else {
-
             const editGearItemObject = {
                 gearName: this.state.editGearName,
                 userId: Number(sessionStorage.getItem("userId")),
@@ -58,8 +57,6 @@ export default class EditForm extends Component {
         });
         }
     render() {
-
-
         return (
             <React.Fragment>
                 <form className="editForm">

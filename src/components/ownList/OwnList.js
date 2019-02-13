@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import OwnCards from "./ownCards"
 
+//own list diplays all gearItems which have been created by the logged in user. Cards will be created using .map to loop over the gearItem array.
 export default class OwnList extends Component {
     render() {
         return (

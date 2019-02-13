@@ -2,6 +2,8 @@
 import React, { Component } from "react"
 export default class SharedGearDetails extends Component {
 
+    //expanded view of a piece of gears details in the shared list.Unlike the gear details, all users can only view details.
+
 
     render() {
         const gear = this.props.sharedItems.find(

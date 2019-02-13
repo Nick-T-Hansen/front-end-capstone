@@ -3,13 +3,18 @@ import { Link } from "react-router-dom";
 
 export default class Login extends Component {
 
+    static navigationOptions = {
+        header: null,
+        title: 'Login',
+        };
+
     // set state
     state = {
         name: "",
         email: ""
     }
 
-    // Update state whenever an input field is edited
+    // fn to update state whenever an input field is edited
     handleFieldChange = evt => {
         const stateToChange = {};
         stateToChange[evt.target.id] = evt.target.value;
@@ -20,7 +25,6 @@ export default class Login extends Component {
     handleLogin = e => {
         e.preventDefault();
 
-        //  setting username in session storage.
         sessionStorage.setItem(
             "name",
             this.state.name

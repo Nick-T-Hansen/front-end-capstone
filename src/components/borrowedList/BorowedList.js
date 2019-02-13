@@ -1,7 +1,7 @@
 import React, { Component } from "react"
-import SharedCard from "./SharedCard"
+import BorrowedCard from "./BorrowedCard"
 
-//shared list diplays all gearItems which have the boolean set to "true", regardless of userId. Cards will be created using .map to loop over the gearItem array.
+//cards which have been borrowed in the shared list will display here using the borrowed key in the gearItem array.
 export default class OwnList extends Component {
     render() {
         return (
@@ -13,7 +13,7 @@ export default class OwnList extends Component {
                         1 of 2
                         <div className="col card-container">
                             {this.props.sharedItems.map(sharedItem =>
-                                <SharedCard key={sharedItem.id} sharedItem={sharedItem} {...this.props} />
+                                <BorrowedCard key={sharedItem.id} sharedItem={sharedItem} {...this.props} />
                             )}
                         </div>
                     </div>
