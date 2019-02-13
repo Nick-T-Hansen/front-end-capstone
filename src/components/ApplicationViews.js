@@ -10,7 +10,7 @@ import Login from "../components/authentication/Login"
 import Registration from "../components/authentication/Registration"
 import SharedList from "./sharedList/SharedList"
 import SharedGearDetails from "./sharedList/SharedGearDetails"
-import NavBar from "./nav/NavBar"
+// import NavBar from "./nav/NavBar"
 import BorrowedList from "./borrowedList/BorowedList"
 
 
@@ -38,6 +38,7 @@ export default class ApplicationViews extends Component {
     })
 
     GearManager.getBookedGear().then(r => {
+      console.log("get booked gear", r)
       this.setState({
       borrowedItems: r
       })
@@ -110,29 +111,27 @@ export default class ApplicationViews extends Component {
       this.setState({
         gearItems: r,
         sharedItems: r,
-        bookedItems: r
       })
     })
     .then(() => GearManager.getSharedGearArray()).then(r => {
       this.setState({
-        sharedItems: r
+        sharedItems: r,
       })
     })
   }
 
   updateBookedGear = (gearId, editGearObject) => {
     return GearManager.put(gearId, editGearObject)
-    .then(() => GearManager.getAllGearExpanded())
+    .then(() => GearManager.getBookedGear())
     .then(r => {
+      console.log("update booked gear", r)
       this.setState({
-        gearItems: r,
-        sharedItems: r,
-        bookedItems: r
+        borrowedItems: r
       })
     })
-    .then(() => GearManager.getBookedGear()).then(r => {
+    .then(() => GearManager.getSharedGearArray()).then(r => {
       this.setState({
-        bookedItems: r
+        bgearItems: r,
       })
     })
   }
@@ -149,11 +148,6 @@ export default class ApplicationViews extends Component {
 
   // authentication for user navigation
   isAuthenticated = () => sessionStorage.getItem("name") !== null
-  // showNav() {
-  //     if (this.isAuthenticated()) {
-  //         return <NavBar />
-  //     }
-  //   }
 
   render() {
     return (
@@ -250,7 +244,7 @@ export default class ApplicationViews extends Component {
           <Route
           path="/borrowed" render={props => {
             if (this.isAuthenticated()) {
-            return ( <BorrowedList {...props} borrowedItems={this.state.borrowedItems} updateComponent={this.updateComponent} updateBookedGear={this.updateGear} />)
+            return ( <BorrowedList {...props} borrowedItems={this.state.borrowedItems} sharedItems={this.state.sharedItems}updateComponent={this.updateComponent} updateBookedGear={this.updateBookedGear} />)
             } else {
               alert("Please log in to continue")
               return <Redirect to="/" />

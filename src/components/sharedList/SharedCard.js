@@ -49,6 +49,7 @@ export default class OwnCard extends Component {
         bookGearEL = () => {
 
             console.log("clicked")
+            // debugger
 
             const editGearItemObject = {
                 gearName: this.props.sharedItem.gearName,
@@ -66,7 +67,7 @@ export default class OwnCard extends Component {
         }
     render() {
 
-        console.log("get shared item from JSON", this.props.sharedItem)
+        // console.log("get shared item from JSON", this.props.sharedItem)
         return (
             <React.Fragment>
                 <section key={this.props.sharedItem.id} className="card">

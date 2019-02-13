@@ -16,7 +16,7 @@ export default class OwnList extends Component {
                             {this.props.borrowedItems.map(borrowedItem =>
                                 <BorrowedCard key={borrowedItem.id} borrowedItem={borrowedItem} {...this.props} />
                             )}
-                            {console.log(this.props.borrowedItems)}
+                            {console.log("console log at map", this.props.borrowedItems)}
                         </div>
                     </div>
             </div>

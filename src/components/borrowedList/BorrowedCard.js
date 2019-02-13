@@ -4,6 +4,13 @@ import { Link } from "react-router-dom";
 //individual cards which are looped and created for the shared list. Depending on the userId, a different button set is created with each card.
 export default class BorrowedCard extends Component {
 
+    // componentDidUpdate(prevProps) {
+    //     // Typical usage (don't forget to compare props):
+    //     if (this.props.borrowedItem !== prevProps.borrowedItem) {
+    //       this.fetchData(this.props.borrowedItem);
+    //     }
+    //   }
+
         //edits the gearItem borrowedUserId and removes it from the shared list when the "Return It" button is clicked
         returnButtonEL = () => {
 
