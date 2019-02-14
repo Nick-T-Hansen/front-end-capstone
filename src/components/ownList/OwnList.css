@@ -1,10 +1,23 @@
+.root {
+    background-image: linear-gradient(to bottom right, #9b9580, #fbf7f7);
+}
+
+/* Gradient transparent - color - transparent */
+hr.style-one {
+    border: 0;
+    height: 3px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #666464,	 rgba(0, 0, 0, 0));
+}
 
 
-.OwnList--container {
+.list--container {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+.page-header {
+    justify-content: center
 }
 
 .card--container {
@@ -12,13 +25,15 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
     justify-content: space-around;
+
 }
 
 .button-container {
     background-color: #9b9580;
 }
 
-h1 {
+h1.page-header-text {
+    text-align: center;
     color: #666464;
 }
 .card {
@@ -37,16 +52,13 @@ h1 {
     margin-left: 30px;
 }
 
-.card > .header{
-    font-size: 8px;
-}
 /* message for private card which is currently shared" */
 .card-message {
-    background-color:#666464;
+    background-color:#7f8c7f;
     color: #fbf7f7;
 }
 
-.btn {
+button.btn--add--gear {
     background-color: #7f8c7f;
     border: none;
     color: white;

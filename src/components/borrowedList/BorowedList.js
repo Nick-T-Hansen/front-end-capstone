@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import BorrowedCard from "./BorrowedCard"
+import "../ownList/OwnList.css"
 
 //cards which have been borrowed in the shared list will display here using the borrowed key in the gearItem array.
 export default class OwnList extends Component {
@@ -14,9 +15,11 @@ export default class OwnList extends Component {
     render = () =>  {
         return (
             <React.Fragment>
-                <div className="container borrowedList--container">
-                    <div className="row"/>
-                        <h1>Borrowed Gear</h1>
+                <div className="list-container">
+                    <header className="page-header">
+                        <h1 className="page-header-text">Borrowed Gear</h1>
+                        <hr className="style-one"></hr>
+                    </header>
                     <div className="row">
                         <div className="card--container">
                             {this.props.borrowedItems.map(borrowedItem =>

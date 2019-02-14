@@ -59,20 +59,20 @@ export default class Login extends Component {
                     <h1> Welcome to Cave</h1>
                     <p>Get together. Get outside. Get your shit back.</p>
                 </div>
-                <div className="login--container">
+                <div className="form-group">
                     <form onSubmit={this.handleLogin}>
                         <h2 className="sign--in">Please sign in</h2>
                         <label htmlFor="inputName">
                             Name
                         </label>
-                        <input onChange={this.handleFieldChange} type="name"
+                        <input className="input-field" onChange={this.handleFieldChange} type="name"
                             id="name"
                             placeholder="Name"
                             required="" autoFocus="" />
                         <label htmlFor="email">
                             Email
                         </label>
-                        <input onChange={this.handleFieldChange} type="email"
+                        <input className="input-field" onChange={this.handleFieldChange} type="email"
                             id="email"
                             placeholder="Email"
                             required="" />
