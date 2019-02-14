@@ -10,25 +10,27 @@ export default class SharedGearDetails extends Component {
             a => a.id === parseInt(this.props.match.params.sharedItemId)) || {};
         console.log(this.props.match.params.sharedItemId)
         return (
+            <React.Fragment>
             <div key={gear.id} className="details--container">
-                <div className="details--entry">
-                    <h1>Details</h1>
-                    <h2 className="details--name" label="Name">
+                <div className="card card-two">
+                    <h2 className="details-header" label="Name">
                         {gear.gearName}
+                        <hr className="style-two"/>
                     </h2>
-                    <p className="details--class" label="Gear Class">
+                    <p className="details-input" label="Gear Class">
                         Class: {gear.gearClass? gear.gearClass.class:""}
                     </p>
-                    <p className="details--quality" label="Gear Quality">
+                    <p className="details-input" label="Gear Quality">
                         Quality: {gear.gearQuality? gear.gearQuality.quality:""}
                     </p>
-                    <p className="details--notes" label="Notes">
+                    <p className="details-input" label="Notes">
                         Notes: {gear.notes}
                     </p>
                 </div>
                 <div className="details--links--container">
                 </div>
             </div>
+            </React.Fragment>
         )
     }
 }

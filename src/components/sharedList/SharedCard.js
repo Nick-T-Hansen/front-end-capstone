@@ -76,7 +76,7 @@ export default class OwnCard extends Component {
                     <section className="card--links--container">
                         <article className="card--link--article">
                         </article>
-                    <div className="button-container">
+                    <div className="small-button-container">
                     {this.renderOwnerCard()}
                     </div>
                     </section>

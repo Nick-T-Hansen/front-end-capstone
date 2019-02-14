@@ -69,8 +69,9 @@ export default class OwnCard extends Component {
                     <section key={this.props.gearItem.id} className="card">
                         <div className="gearItem--card">
                             <h2>{this.props.gearItem.gearName}</h2>
+                            <hr className="style-two"/>
                         </div>
-                        <div className="button-container">
+                        <div className="small-button-container">
                             <button type="submit" onClick={this.shareButtonEL}  className="btn btn-card--share">Share</button>
                             <Link className="btn card--nav--link" to={`/${this.props.gearItem.id}/details`}>Details</Link>
                         </div>

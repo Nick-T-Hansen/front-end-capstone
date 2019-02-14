@@ -11,7 +11,6 @@ export default class GearDetails extends Component {
         // console.log(this.props)
         return (
             <React.Fragment>
-
             <div key={gear.id} className="details--container">
 
                 <div className="card card-two">
