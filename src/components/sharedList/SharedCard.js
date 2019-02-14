@@ -48,9 +48,6 @@ export default class OwnCard extends Component {
         //edits the gearItem based on the borrowedUserId
         bookGearEL = () => {
 
-            console.log("clicked")
-            // debugger
-
             const editGearItemObject = {
                 gearName: this.props.sharedItem.gearName,
                 userId: this.props.sharedItem.userId,
