@@ -182,7 +182,7 @@ export default class ApplicationViews extends Component {
           }}
         />
 
-        <Route
+        {/* <Route
           path="/home" render={props => {
             if (this.isAuthenticated()) {
             return (<Homepage {...props}  />)
@@ -191,7 +191,7 @@ export default class ApplicationViews extends Component {
             return <Redirect to="/" />
             }
           }}
-        />
+        /> */}
 
         <Route
           exact path="/owned" render={props => {

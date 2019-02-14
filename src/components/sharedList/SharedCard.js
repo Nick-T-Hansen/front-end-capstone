@@ -10,7 +10,9 @@ export default class OwnCard extends Component {
         if (this.props.sharedItem.borrowedUserId !== "") {
             return (
                 <React.Fragment>
-                <p> Item is currently booked </p>
+                <div className="card-message">
+                <p> Item is currently being borrowed.</p>
+                </div>
             </React.Fragment>
             )}
         else if (this.props.sharedItem.userId == usersGear) {
@@ -69,12 +71,12 @@ export default class OwnCard extends Component {
             <React.Fragment>
                 <section key={this.props.sharedItem.id} className="card">
                     <div className="sharedItem--card">
-                        <h2>{this.props.sharedItem.gearName}</h2>
+                    <h2 className="card-header">{this.props.sharedItem.gearName}</h2>
                     </div>
                     <section className="card--links--container">
                         <article className="card--link--article">
                         </article>
-                    <div className="button-container">
+                    <div className="small-button-container">
                     {this.renderOwnerCard()}
                     </div>
                     </section>

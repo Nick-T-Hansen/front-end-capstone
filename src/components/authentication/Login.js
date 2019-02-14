@@ -48,41 +48,46 @@ export default class Login extends Component {
         let logedIn = Number(currentUser)
         console.log(logedIn)
         this.props.updateComponent()
-        this.props.history.push("/home")
+        this.props.history.push("/owned")
         }
 }
 
     render () {
         return (
             <React.Fragment>
-                <div className="welcome--container">
-                    <h1> Welcome to Cave</h1>
-                    <p>Get together. Get outside. Get your shit back.</p>
-                </div>
-                <div className="login--container">
+            <div className="login-container">
+                <div className="jumbotron">
+                    <h1 className="display-4">Welcome to Cave</h1>
+                    <p className="lead">Get Together. Get Outside. Get Your Shit Back.</p>
+                    <hr className="my-4"></hr>
+
+                <div className="form-group">
                     <form onSubmit={this.handleLogin}>
-                        <h2 className="sign--in">Please sign in</h2>
+                        {/* <h3 className="registration">Enter Cave</h3> */}
                         <label htmlFor="inputName">
                             Name
                         </label>
-                        <input onChange={this.handleFieldChange} type="name"
+                        <input className="form-control" onChange={this.handleFieldChange} type="name"
                             id="name"
                             placeholder="Name"
                             required="" autoFocus="" />
                         <label htmlFor="email">
                             Email
                         </label>
-                        <input onChange={this.handleFieldChange} type="email"
+                        <br></br>
+                        <input className="form-control" onChange={this.handleFieldChange} type="email"
                             id="email"
                             placeholder="Email"
                             required="" />
-                        <button type="btn submit"
+                        <button className="btn btn-outline-secondary btn-sm" type="submit"
                                 onClick = {this.handleLogin}
-                            >Sign in
+                                >Sign in
                         </button>
+                    <Link className= "nav-link" to={`/register`}>I'm new here, sign me up!</Link>
                     </form>
-                    <Link className="login--nav--link" to={`/register`}>I'm new here, sign me up!</Link>
                 </div>
+            </div>
+                                </div>
             </React.Fragment>
         )
     }

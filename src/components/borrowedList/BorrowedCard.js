@@ -24,13 +24,13 @@ export default class BorrowedCard extends Component {
             <React.Fragment>
                 <section key={this.props.borrowedItem.userId} className="card">
                     <div className="borrowedItem--card">
-                        <h2>{this.props.borrowedItem.gearName}</h2>
+                    <h2 className="card-header">{this.props.borrowedItem.gearName}</h2>
                     </div>
 
-                    <div className="card-message">
+                    <div className="card-message-borrowed">
                         <p>Owned by: {this.props.borrowedItem.user.name} .</p>
                     </div>
-                    <div className="button-container">
+                    <div className="small-button-container">
                         <button type="submit" onClick={this.returnButtonEL}  className="btn btn-card--borrowed">Return It</button>
                         <Link className="btn card--nav--link" to={`/${this.props.borrowedItem.id}/geardetails`}>Details</Link>
                     </div>

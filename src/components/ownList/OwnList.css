@@ -1,10 +1,37 @@
+.login-container {
+    background-image: linear-gradient(to  right, white, #9b9580 );
+}
+.jumbotron {
+    background-image: linear-gradient(to  right, white, #9b9580);
+}
 
 
-.OwnList--container {
+.list--container {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+/* page header styling */
+h1.page-header-text {
+    text-align: center;
+    color: #666464;
+}
+.page-header {
+    justify-content: center
+}
+
+hr.style-one {
+    border: 0;
+    height: 3px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #666464,	 rgba(0, 0, 0, 0));
+}
+
+hr.style-two {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #666464,	 rgba(0, 0, 0, 0));
 }
 
 .card--container {
@@ -14,12 +41,17 @@
     justify-content: space-around;
 }
 
-.button-container {
-    background-color: #9b9580;
+.details--container {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-h1 {
-    color: #666464;
+.small-button-container {
+    background-color: #9b9580;
 }
 .card {
     display: flex;
@@ -27,7 +59,7 @@ h1 {
     text-align: center;
     border-color: black;
     color: #666464;
-
+    background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     width: 14rem;
     height: 17rem;
@@ -36,17 +68,44 @@ h1 {
     margin-bottom: 30px;
     margin-left: 30px;
 }
+/* gear details card */
+.card-two {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: left;
 
-.card > .header{
-    font-size: 8px;
+    border-color: black;
+    color: #666464;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 28rem;
+    height: 30rem;
+    margin-top: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
 }
+
+.details-header {
+    text-align: center;
+}
+.details-input {
+    padding-left: 50px;
+}
+
+.button-container {
+    padding-left: 40px;
+}
+
+
+
 /* message for private card which is currently shared" */
 .card-message {
-    background-color:#666464;
+    background-color:#7f8c7f;
     color: #fbf7f7;
 }
 
-.btn {
+button.btn--add--gear {
     background-color: #7f8c7f;
     border: none;
     color: white;

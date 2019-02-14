@@ -21,9 +21,6 @@ class NavBar extends Component {
                     <img src={caveLogo} className="nav--cave-logo" alt="cave logo"></img>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/home">Home</Link>
-                    </li>
-                    <li className="nav-item">
                         <Link className="nav-link" to="/owned">Owned</Link>
                     </li>
                     <li className="nav-item">
@@ -32,8 +29,9 @@ class NavBar extends Component {
                     <li className="nav-item">
                         <Link className="nav-link" to="/borrowed">Borrowed</Link>
                     </li>
-                    <button type="submit" onClick={this.logout}  className="nav-item btn btn-nav-logout">Logout</button>
                 </ul>
+                    <button type="submit" onClick={this.logout}  className="btn .navbar-btn">Logout</button>
+
             </nav>
         )
     }
