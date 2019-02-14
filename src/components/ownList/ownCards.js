@@ -50,6 +50,7 @@ export default class OwnCard extends Component {
                     <div className="gearItem--card">
 
                         <h2 className="card-header">{this.props.gearItem.gearName}</h2>
+                        <hr className="style-two"></hr>
 
                     </div>
                     <div className="card-message">

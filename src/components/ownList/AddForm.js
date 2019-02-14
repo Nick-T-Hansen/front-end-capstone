@@ -44,18 +44,19 @@ export default class AddForm extends Component {
     render() {
         return (
             <React.Fragment>
-                <form className="addForm">
-                <h1>Add Your Gear</h1>
-                    <div className="add--form--group">
-                        <label htmlFor="Item">Item</label>
+                <form className="form-horizontal">
+                <h1 className="page-header-text">Add Your Gear</h1>
+
+                    <div className="form-group">
+                        <label className="control-lablel">Item</label>
                         <input type="text" required
                                 className="form-control"
                                 onChange={this.handleFieldChange}
                                 id="gearItemName"
                                 placeholder="Item" />
                     </div>
-                    <div className="add--form--group">
-                        <label htmlFor="class">Class</label>
+                    <div className="form-group">
+                    <label className="control-lablel">Class</label>
                         <select value={this.gearItemClass}
                                 onChange={this.handleFieldChange} id="gearItemClass">
                             <option value="0">select</option>
@@ -64,8 +65,8 @@ export default class AddForm extends Component {
                         )}
                         </select>
                     </div>
-                    <div className="add--form--group">
-                        <label htmlFor="quality">Quality</label>
+                    <div className="form-group">
+                    <label className="control-lablel">Quality</label>
                         <select value={this.gearItemQuality}
                                 onChange={this.handleFieldChange} id="gearItemQuality">
                             <option value="0">select</option>
@@ -75,13 +76,13 @@ export default class AddForm extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="notes">Notes</label>
+                    <label className="control-lablel">Notes</label>
                         <input type="text" required
                                 className="form-control"
                                 onChange={this.handleFieldChange}
                                 id="gearItemNotes" placeholder="Add gear quirks, size, or additional information here" />
                     </div>
-                    <button type="submit" onClick={this.constructNewEvent}  className="btn btn-addForm--submit">Submit</button>
+                    <button type="submit" onClick={this.constructNewEvent}  className="btn btn-default">Submit</button>
                 </form>
             </React.Fragment>
         )
