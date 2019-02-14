@@ -46,25 +46,25 @@ export default class Registration extends Component {
                     <h1> Glad to have you join us.</h1>
                     <p>Your friends are too.</p>
                 </div>
-                <div className="registration--container">
+                <div className="form-group">
                     <form onSubmit={this.handleLogin}>
                         <h2 className="sign--in">Please sign in</h2>
                         <label htmlFor="inputName">
                             Name
                         </label>
-                        <input onChange={this.handleFieldChange} type="name"
+                        <input className="form-control" onChange={this.handleFieldChange} type="name"
                             id="name"
                             placeholder="Name"
                             required="" autoFocus="" />
                         <label htmlFor="inputEmail">
                             Email
                         </label>
-                        <input onChange={this.handleFieldChange} type="email"
+                        <input className="form-control" onChange={this.handleFieldChange} type="email"
                             id="email"
                             placeholder="Email"
                             required="" />
-                        <button type="submit"
-                                onClick={this.createNewUser}  className="btn btn-registration--submit"
+                        <button type="submit" className="btn btn-outline-secondary btn-sm"
+                                onClick={this.createNewUser}
                                 >
                             Register
                         </button>

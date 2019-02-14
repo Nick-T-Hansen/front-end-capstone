@@ -65,23 +65,24 @@ export default class Login extends Component {
                         <label htmlFor="inputName">
                             Name
                         </label>
-                        <input className="input-field" onChange={this.handleFieldChange} type="name"
+                        <input className="form-control" onChange={this.handleFieldChange} type="name"
                             id="name"
                             placeholder="Name"
                             required="" autoFocus="" />
                         <label htmlFor="email">
                             Email
                         </label>
-                        <input className="input-field" onChange={this.handleFieldChange} type="email"
+                        <br></br>
+                        <input className="form-control" onChange={this.handleFieldChange} type="email"
                             id="email"
                             placeholder="Email"
                             required="" />
-                        <button type="btn submit"
+                        <button className="btn btn-outline-secondary btn-sm" type="submit"
                                 onClick = {this.handleLogin}
                             >Sign in
                         </button>
                     </form>
-                    <Link className="login--nav--link" to={`/register`}>I'm new here, sign me up!</Link>
+                    <Link className= "nav-link" to={`/register`}>I'm new here, sign me up!</Link>
                 </div>
             </React.Fragment>
         )

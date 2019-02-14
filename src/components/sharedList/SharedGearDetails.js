@@ -18,13 +18,13 @@ export default class SharedGearDetails extends Component {
                         <hr className="style-two"/>
                     </h2>
                     <p className="details-input" label="Gear Class">
-                        Class: {gear.gearClass? gear.gearClass.class:""}
+                        Class: <b>{gear.gearClass? gear.gearClass.class:""}</b>
                     </p>
                     <p className="details-input" label="Gear Quality">
-                        Quality: {gear.gearQuality? gear.gearQuality.quality:""}
+                        Quality: <b>{gear.gearQuality? gear.gearQuality.quality:""}</b>
                     </p>
                     <p className="details-input" label="Notes">
-                        Notes: {gear.notes}
+                        Notes: <b>{gear.notes}</b>
                     </p>
                 </div>
                 <div className="details--links--container">
