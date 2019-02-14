@@ -116,7 +116,7 @@ export default class ApplicationViews extends Component {
     .then(r => {
       this.setState({
         gearItems: r,
-        sharedItems: r,
+        // sharedItems: r,
       })
     })
     .then(() => GearManager.getSharedGearArray())
@@ -124,6 +124,14 @@ export default class ApplicationViews extends Component {
       this.setState({
         sharedItems: r,
         // gearItems: r
+      })
+    })
+    .then(() => GearManager.getBookedGear())
+    .then(r => {
+      console.log("update booked gear", r)
+      this.setState({
+        borrowedItems: r,
+
       })
     })
   }
@@ -232,7 +240,7 @@ export default class ApplicationViews extends Component {
           <Route
           exact path="/shared" render={props => {
             if (this.isAuthenticated()) {
-            return ( <SharedList {...props} sharedItems={this.state.sharedItems} updateComponent={this.updateComponent} updateGear={this.updateGear} />)
+            return ( <SharedList {...props} sharedItems={this.state.sharedItems} updateGear={this.updateGear} />)
             } else {
               alert("Please log in to continue")
               return <Redirect to="/" />

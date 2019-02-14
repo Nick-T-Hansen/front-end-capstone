@@ -48,7 +48,9 @@ export default class OwnCard extends Component {
             <React.Fragment>
                 <section key={this.props.gearItem.id} className="card card--private--shared">
                     <div className="gearItem--card">
-                        <h2>{this.props.gearItem.gearName}</h2>
+
+                        <h2 className="header">{this.props.gearItem.gearName}</h2>
+
                     </div>
                     <div className="card-message">
                     <p>This item is currently being shared.</p>
