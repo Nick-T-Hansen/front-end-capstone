@@ -45,10 +45,9 @@ export default class Registration extends Component {
                 <div className="welcome--container">
                     <h1> Glad to have you join us.</h1>
                     <p>Your friends are too.</p>
-                </div>
                 <div className="form-group">
                     <form onSubmit={this.handleLogin}>
-                        <h2 className="sign--in">Please sign in</h2>
+                        <h3 className="registration">Register A New Account</h3>
                         <label htmlFor="inputName">
                             Name
                         </label>
@@ -69,6 +68,7 @@ export default class Registration extends Component {
                             Register
                         </button>
                     </form>
+                    </div>
                 </div>
             </React.Fragment>
         )

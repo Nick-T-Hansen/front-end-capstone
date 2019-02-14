@@ -55,13 +55,15 @@ export default class Login extends Component {
     render () {
         return (
             <React.Fragment>
-                <div className="welcome--container">
-                    <h1> Welcome to Cave</h1>
-                    <p>Get together. Get outside. Get your shit back.</p>
-                </div>
+            <div className="login-container">
+                <div className="jumbotron">
+                    <h1 className="display-4">Welcome to Cave</h1>
+                    <p className="lead">Get Together. Get Outside. Get Your Shit Back.</p>
+                    <hr className="my-4"></hr>
+
                 <div className="form-group">
                     <form onSubmit={this.handleLogin}>
-                        <h2 className="sign--in">Please sign in</h2>
+                        {/* <h3 className="registration">Enter Cave</h3> */}
                         <label htmlFor="inputName">
                             Name
                         </label>
@@ -79,11 +81,13 @@ export default class Login extends Component {
                             required="" />
                         <button className="btn btn-outline-secondary btn-sm" type="submit"
                                 onClick = {this.handleLogin}
-                            >Sign in
+                                >Sign in
                         </button>
-                    </form>
                     <Link className= "nav-link" to={`/register`}>I'm new here, sign me up!</Link>
+                    </form>
                 </div>
+            </div>
+                                </div>
             </React.Fragment>
         )
     }
