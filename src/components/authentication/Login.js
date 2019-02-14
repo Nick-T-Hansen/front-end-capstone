@@ -48,7 +48,7 @@ export default class Login extends Component {
         let logedIn = Number(currentUser)
         console.log(logedIn)
         this.props.updateComponent()
-        this.props.history.push("/home")
+        this.props.history.push("/owned")
         }
 }
 

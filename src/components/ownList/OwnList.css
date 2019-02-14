@@ -1,4 +1,4 @@
-.root {
+.list {
     background-image: linear-gradient(to bottom right, #9b9580, #fbf7f7);
 }
 
@@ -42,7 +42,7 @@ h1.page-header-text {
     text-align: center;
     border-color: black;
     color: #666464;
-
+    background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     width: 14rem;
     height: 17rem;
@@ -51,6 +51,13 @@ h1.page-header-text {
     margin-bottom: 30px;
     margin-left: 30px;
 }
+
+/* .card-header {
+    background-color: inherit;
+    border: inherit;
+
+} */
+
 
 /* message for private card which is currently shared" */
 .card-message {

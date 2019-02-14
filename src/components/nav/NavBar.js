@@ -21,9 +21,6 @@ class NavBar extends Component {
                     <img src={caveLogo} className="nav--cave-logo" alt="cave logo"></img>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/home">Home</Link>
-                    </li>
-                    <li className="nav-item">
                         <Link className="nav-link" to="/owned">Owned</Link>
                     </li>
                     <li className="nav-item">
