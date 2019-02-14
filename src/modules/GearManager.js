@@ -10,8 +10,16 @@ export default {
         .then(e => e.json())
         //
     },
+    //GET gear borrowed by the logged in user
+        getBookedGear() {
+            let sessionUser = sessionStorage.getItem("userId")
+            let sessionUserId = Number(sessionUser)
+            console.log("userId", sessionUserId)
+            return fetch(`${remoteURL}/gearItems?borrowedUserId=${sessionUserId}&_expand=user`)
+            .then(e => e.json())
+    },
     getSharedGearArray() {
-        return fetch(`${remoteURL}/gearItems?shared=true&_expand=gearQuality&_expand=gearClass`)
+        return fetch(`${remoteURL}/gearItems?shared=true&_expand=gearQuality&_expand=gearClass&_expand=user`)
         .then(e => e.json())
         //
     },

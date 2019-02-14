@@ -27,9 +27,6 @@ export default class SharedGearDetails extends Component {
                     </p>
                 </div>
                 <div className="details--links--container">
-                    <button className="btn btn--edit--gear"
-                            onClick={() => this.props.history.push(`/shared`)}
-                            >Go Back</button>
                 </div>
             </div>
         )

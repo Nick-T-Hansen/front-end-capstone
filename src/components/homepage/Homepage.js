@@ -9,25 +9,25 @@ export default class Homepage extends Component {
                 </div>
                 <h1> Welcome back, {sessionStorage.getItem("name")}</h1>
                 <div className="row">
-                    <div className="col">.col</div>
-                    <div className="col">.col
+                    <div className="col"/>
+                    <div className="col">
                         <Link className="home--nav--link" to={`/owned`}>Owned</Link>
                     </div>
-                    <div className="col">.col</div>
+                    <div className="col"/>
                 </div>
                 <div className="row">
-                    <div className="col">.col</div>
-                    <div className="col">.col
+                    <div className="col"/>
+                    <div className="col">
                         <Link className="home--nav--link" to={`/shared`}>Shared</Link>
                     </div>
-                    <div className="col">.col</div>
+                    <div className="col"/>
                 </div>
                 <div className="row">
-                    <div className="col">.col</div>
-                    <div className="col">.col
+                    <div className="col"/>
+                    <div className="col">
                         <Link className="home--nav--link" to={`/borrowed`}>Borrowed</Link>
                         </div>
-                    <div className="col">.col</div>
+                    <div className="col"/>
                 </div>
             </React.Fragment>
         )

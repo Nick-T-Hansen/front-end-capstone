@@ -10,7 +10,8 @@ import Login from "../components/authentication/Login"
 import Registration from "../components/authentication/Registration"
 import SharedList from "./sharedList/SharedList"
 import SharedGearDetails from "./sharedList/SharedGearDetails"
-import NavBar from "./nav/NavBar"
+// import NavBar from "./nav/NavBar"
+import BorrowedList from "./borrowedList/BorowedList"
 
 
 export default class ApplicationViews extends Component {
@@ -19,44 +20,57 @@ export default class ApplicationViews extends Component {
     gearItems: [],
     gearQualities: [],
     gearClasses: [],
-    sharedItems: []
+    sharedItems: [],
+    borrowedItems: []
   }
 
   componentDidMount() {
-    GearManager.getSharedGearArray().then(r => {
+    GearManager.getSharedGearArray()
+    .then(r => {
       this.setState({
         sharedItems: r
       })
     })
 
-    GearManager.getAllGearExpanded().then(r => {
+    GearManager.getAllGearExpanded()
+    .then(r => {
       this.setState({
       gearItems: r
       })
     })
 
-    GearManager.getAllGearClasses().then(r => {
+    GearManager.getBookedGear().then(r => {
+      console.log("get booked gear", r)
+      this.setState({
+      borrowedItems: r
+      })
+    })
+
+    GearManager.getAllGearClasses()
+    .then(r => {
       this.setState({
       gearClasses: r
       })
     })
 
-    GearManager.getAllGearQualities().then(r => {
+    GearManager.getAllGearQualities()
+    .then(r => {
       this.setState({
       gearQualities: r
       })
     })
 
-    GearManager.getAllUsers().then(r => {
+    GearManager.getAllUsers()
+    .then(r => {
       this.setState({
         users: r
       })
     })
   }
 
-
     updateComponent = () => {
-      GearManager.getAllGearExpanded().then(r => {
+      GearManager.getAllGearExpanded()
+      .then(r => {
         this.setState({
         gearItems: r
         })
@@ -65,7 +79,8 @@ export default class ApplicationViews extends Component {
 
   postNewUser = (newUser) => {
     return GearManager.postNewUser(newUser)
-    .then(() => GearManager.getAllUsers()).then(r => {
+    .then(() => GearManager.getAllUsers())
+    .then(r => {
       this.setState({
         users: r
       })
@@ -78,8 +93,7 @@ export default class ApplicationViews extends Component {
   .then(r => this.setState({
       gearItems: r
       })
-  )
-  }
+  )}
 
   deleteExistingGear = (id) => {
     return GearManager.deleteGearItem(id)
@@ -88,31 +102,50 @@ export default class ApplicationViews extends Component {
     gearItems: r
     })
     )
-    .then(() => GearManager.getSharedGearArray()).then(r => {
+    .then(() => GearManager.getSharedGearArray())
+    .then(r => {
       this.setState({
         sharedItems: r
       })
     })
   }
-
+//update gear for shared list
   updateGear = (gearId, editGearObject) => {
     return GearManager.put(gearId, editGearObject)
     .then(() => GearManager.getAllGearExpanded())
     .then(r => {
       this.setState({
         gearItems: r,
-        sharedItems: r
+        sharedItems: r,
       })
     })
+    .then(() => GearManager.getSharedGearArray())
+    .then(r => {
+      this.setState({
+        sharedItems: r,
+        // gearItems: r
+      })
+    })
+  }
+//update gear for borrowed list (not updating auto, need to refresh)--------------------------TO DO-------------
+  updateBookedGear = (gearId, editGearObject) => {
+    return GearManager.put(gearId, editGearObject)
+    .then(() => GearManager.getBookedGear())
+    .then(r => {
+      console.log("update booked gear", r)
+      this.setState({
+        borrowedItems: r,
+        gearItems: r
+      })
+    })
+    //necessary to refresh the shared list after removed from a users borrowed list. page does not update without this.
     .then(() => GearManager.getSharedGearArray()).then(r => {
       this.setState({
         sharedItems: r
       })
     })
   }
-
-
-
+  //patch to update just the boolean value in a gear object
   patchGear = (gearId, booleanToChange) => {
     return GearManager.patch(gearId, booleanToChange)
     .then(() => GearManager.getAllGearExpanded())
@@ -124,12 +157,7 @@ export default class ApplicationViews extends Component {
   }
 
   // authentication for user navigation
-  isAuthenticated = () => sessionStorage.getItem("User") !== null
-  // showNav() {
-  //     if (this.isAuthenticated()) {
-  //         return <NavBar />
-  //     }
-  //   }
+  isAuthenticated = () => sessionStorage.getItem("name") !== null
 
   render() {
     return (
@@ -147,11 +175,11 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          exact path="/home" render={props => {
+          path="/home" render={props => {
             if (this.isAuthenticated()) {
             return (<Homepage {...props}  />)
           } else {
-            alert("Please log in to continue")
+            alert(" Please log in to continue")
             return <Redirect to="/" />
             }
           }}
@@ -223,16 +251,16 @@ export default class ApplicationViews extends Component {
           }}
         />
 
-          {/* <Route
+          <Route
           path="/borrowed" render={props => {
             if (this.isAuthenticated()) {
-            return ( <BorrowedList {...props} sharedItems={this.state.sharedItems} updateComponent={this.updateComponent} updateGear={this.updateGear} />)
+            return ( <BorrowedList {...props} borrowedItems={this.state.borrowedItems} updateComponent={this.updateComponent} updateBookedGear={this.updateBookedGear} />)
             } else {
               alert("Please log in to continue")
               return <Redirect to="/" />
             }
           }}
-        /> */}
+        />
       </React.Fragment>
     );
   }

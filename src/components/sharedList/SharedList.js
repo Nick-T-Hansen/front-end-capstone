@@ -10,8 +10,7 @@ export default class OwnList extends Component {
                     <div className="row"/>
                         <h1>Shared Gear</h1>
                     <div className="row">
-                        1 of 2
-                        <div className="col card-container">
+                        <div className=" card--container">
                             {this.props.sharedItems.map(sharedItem =>
                                 <SharedCard key={sharedItem.id} sharedItem={sharedItem} {...this.props} />
                             )}

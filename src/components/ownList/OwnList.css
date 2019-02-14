@@ -5,6 +5,13 @@
     justify-content: space-around;
 }
 
+.card--container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .card {
     display: flex;
     justify-content: space-evenly;

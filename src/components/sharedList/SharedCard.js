@@ -7,18 +7,25 @@ export default class OwnCard extends Component {
     //logic to render either the buttons for the gear owner (details and remove) or buttons for another user (details and book)
     renderOwnerCard = () => {
         let usersGear = sessionStorage.getItem("userId")
-        if (this.props.sharedItem.userId == usersGear) {
-            return(
-            <React.Fragment>
-                <button type="submit" onClick={this.UnshareButtonEL}  className="btn btn-card--share">Unshare</button>
-                <Link className="btn card--nav--link" to={`/${this.props.sharedItem.id}/geardetails`}>Details</Link>
-            </React.Fragment> )}
+        if (this.props.sharedItem.borrowedUserId !== "") {
+            return (
+                <React.Fragment>
+                <p> Item is currently booked </p>
+            </React.Fragment>
+            )}
+        else if (this.props.sharedItem.userId == usersGear) {
+        return(
+        <React.Fragment>
+            <button type="submit" onClick={this.UnshareButtonEL}  className="btn btn-card--share">Unshare</button>
+            <Link className="btn card--nav--link" to={`/${this.props.sharedItem.id}/geardetails`}>Details</Link>
+        </React.Fragment> )}
         else {
             return(
             <React.Fragment>
-                <button type="submit" onClick={this.shareButtonEL}  className="btn btn-card--share">Book It</button>
+                <button type="submit" onClick={this.bookGearEL}  className="btn btn-card--share">Book It</button>
                 <Link className="btn card--nav--link" to={`/${this.props.sharedItem.id}/geardetails`}>Details</Link>
             </React.Fragment>)}
+
         }
 
         //edits the gearItem boolean based on id and removes it from the shared list when the "unshare" button is clicked
@@ -38,9 +45,26 @@ export default class OwnCard extends Component {
             alert(`${this.props.sharedItem.gearName} has been removed from the shared list`)
         }
 
+        //edits the gearItem based on the borrowedUserId
+        bookGearEL = () => {
+
+            const editGearItemObject = {
+                gearName: this.props.sharedItem.gearName,
+                userId: this.props.sharedItem.userId,
+                gearQualityId: Number(this.props.sharedItem.gearQualityId),
+                gearClassId: Number(this.props.sharedItem.gearClassId),
+                notes: this.props.sharedItem.notes,
+                borrowedUserId: Number(sessionStorage.getItem("userId")),
+                shared: this.props.sharedItem.shared
+            }
+
+            this.props.updateGear(this.props.sharedItem.id, editGearItemObject)
+            alert(`${this.props.sharedItem.gearName} has been booked`)
+
+        }
     render() {
 
-        console.log("get shared item from JSON", this.props.sharedItem)
+        // console.log("get shared item from JSON", this.props.sharedItem)
         return (
             <React.Fragment>
                 <section key={this.props.sharedItem.id} className="card">
