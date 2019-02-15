@@ -28,7 +28,7 @@ export default class BorrowedCard extends Component {
                     </div>
 
                     <div className="card-message-borrowed">
-                        <p>Owned by: {this.props.borrowedItem.user.name}.</p>
+                        <p>Owned by: {this.props.borrowedItem.user.name}</p>
                     </div>
                     <div className="small-button-container">
                         <button type="submit" onClick={this.returnButtonEL}  className="btn btn-card--borrowed">Return It</button>

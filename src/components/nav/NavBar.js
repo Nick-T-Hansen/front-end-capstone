@@ -30,7 +30,8 @@ class NavBar extends Component {
                         <Link className="nav-link" to="/borrowed">Borrowed</Link>
                     </li>
                 </ul>
-                    <button type="submit" onClick={this.logout}  className="btn .navbar-btn">Logout</button>
+                    <button type="submit" onClick={this.logout}  className="btn .navbar-btn"
+                    >Logout</button>
 
             </nav>
         )

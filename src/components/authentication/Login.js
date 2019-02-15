@@ -67,7 +67,7 @@ export default class Login extends Component {
                         <label htmlFor="inputName">
                             {/* Name */}
                         </label>
-                        <input className="form-control" onChange={this.handleFieldChange} type="name"
+                        <input className="form-control border-0" onChange={this.handleFieldChange} type="name"
                             id="name"
                             placeholder="Name"
                             required="" autoFocus="" />
@@ -75,7 +75,7 @@ export default class Login extends Component {
                             {/* Email */}
                         </label>
                         <br></br>
-                        <input className="form-control" onChange={this.handleFieldChange} type="email"
+                        <input className="form-control border-0" onChange={this.handleFieldChange} type="email"
                             id="email"
                             placeholder="Email"
                             required="" />
