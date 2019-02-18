@@ -1,6 +1,5 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
-import Homepage from "./homepage/Homepage";
 import OwnList from "./ownList/OwnList"
 import GearManager from "../modules/GearManager";
 import GearDetails from "./ownList/GearDetails";
@@ -10,7 +9,6 @@ import Login from "../components/authentication/Login"
 import Registration from "../components/authentication/Registration"
 import SharedList from "./sharedList/SharedList"
 import SharedGearDetails from "./sharedList/SharedGearDetails"
-// import NavBar from "./nav/NavBar"
 import BorrowedList from "./borrowedList/BorowedList"
 
 
