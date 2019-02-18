@@ -135,7 +135,7 @@ export default class ApplicationViews extends Component {
       })
     })
   }
-//update gear for borrowed list (not updating auto, need to refresh)--------------------------TO DO-------------
+//update gear for borrowed list is being reused for all edit functionality and so it needs to update state in the multiple arrays with rely on it.
   updateBookedGear = (gearId, editGearObject) => {
     return GearManager.put(gearId, editGearObject)
     .then(() => GearManager.getBookedGear())
@@ -164,7 +164,7 @@ export default class ApplicationViews extends Component {
     })
   }
 
-  // authentication for user navigation
+  //basic authentication to prohibit the use of the nav bar until a user is logged in
   isAuthenticated = () => sessionStorage.getItem("name") !== null
 
   render() {
