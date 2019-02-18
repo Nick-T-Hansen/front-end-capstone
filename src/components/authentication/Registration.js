@@ -43,22 +43,25 @@ export default class Registration extends Component {
         return (
             <React.Fragment>
                 <div className="welcome--container">
-                    <h1> Glad to have you join us.</h1>
-                    <p>Your friends are too.</p>
+                <div className="jumbotron">
+                    <h1 className="display-4">Glad to have you join us.</h1>
+                    <p className="lead">Get ready to explore.</p>
+                    <hr className="my-4"></hr>
+
                 <div className="form-group">
                     <form onSubmit={this.handleLogin}>
                         <h3 className="registration">Register A New Account</h3>
                         <label htmlFor="inputName">
-                            Name
+                            {/* Name */}
                         </label>
-                        <input className="form-control" onChange={this.handleFieldChange} type="name"
+                        <input className="form-control border-0" onChange={this.handleFieldChange} type="name"
                             id="name"
                             placeholder="Name"
                             required="" autoFocus="" />
                         <label htmlFor="inputEmail">
-                            Email
+                            {/* Email */}
                         </label>
-                        <input className="form-control" onChange={this.handleFieldChange} type="email"
+                        <input className="form-control border-0" onChange={this.handleFieldChange} type="email"
                             id="email"
                             placeholder="Email"
                             required="" />
@@ -68,6 +71,7 @@ export default class Registration extends Component {
                             Register
                         </button>
                     </form>
+                    </div>
                     </div>
                 </div>
             </React.Fragment>

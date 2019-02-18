@@ -60,7 +60,7 @@ export default class EditForm extends Component {
         return (
             <React.Fragment>
                 <form className="editForm">
-                <h1>Edit Your Gear</h1>
+                <h1 className="page-header-text">Edit Your Gear</h1>
                     <div className="edit--form--group">
                         <label htmlFor="Item">Item</label>
                         <input type="text" required

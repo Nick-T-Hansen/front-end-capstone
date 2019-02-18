@@ -65,17 +65,17 @@ export default class Login extends Component {
                     <form onSubmit={this.handleLogin}>
                         {/* <h3 className="registration">Enter Cave</h3> */}
                         <label htmlFor="inputName">
-                            Name
+                            {/* Name */}
                         </label>
-                        <input className="form-control" onChange={this.handleFieldChange} type="name"
+                        <input className="form-control border-0" onChange={this.handleFieldChange} type="name"
                             id="name"
                             placeholder="Name"
                             required="" autoFocus="" />
                         <label htmlFor="email">
-                            Email
+                            {/* Email */}
                         </label>
                         <br></br>
-                        <input className="form-control" onChange={this.handleFieldChange} type="email"
+                        <input className="form-control border-0" onChange={this.handleFieldChange} type="email"
                             id="email"
                             placeholder="Email"
                             required="" />

@@ -5,6 +5,10 @@
     background-image: linear-gradient(to  right, white, #9b9580);
 }
 
+.form-control{
+    background-image: linear-gradient(to  right, white, #9b9580);
+}
+
 
 .list--container {
     display: flex;
