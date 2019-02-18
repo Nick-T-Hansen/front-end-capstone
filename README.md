@@ -1,4 +1,3 @@
-# Empty React App Skeleton
 
 # Cave
 Cave is my first simple CRUD application using React. Cave originated as a way for me to organize my personal camping gear. The application allows a user to:
@@ -6,21 +5,21 @@ Cave is my first simple CRUD application using React. Cave originated as a way f
 2. Determine which gear they would want to share with other people using the application and allow them to view the gear and request to use it.
 3. Keep track of the borrowed camping gear a user has to be able to return it back to their owner.
 
-## Getting Started
-1. clone repo using `git clone https://github.com/Nick-T-Hansen/front-end-capstone.git`
-2. run `npm install`
-3. copy over test data from the "Test Data" section below to be inserted into the `database.json` file located in the api folder.
-4. run the JSON server at `json-server -p 5002 -w database.json`
-5. `npm start`
-6. create a new account and login
-
-
-## Prerequisites
+## Dependencies
 The Cave application utilizes React, React-Router-Dom, and Bootstrap.
 1. `npm install bootstrap`
 2. `npm install react-router-dom`
 
-##Thank You
+## Getting Started
+1. clone repo using `git clone https://github.com/Nick-T-Hansen/front-end-capstone.git`
+1. run `npm install` to pull in dependencies
+1. copy over test data from the "Test Data" section below to be inserted into the `database.json` file located in the api folder.
+1. `npm install -g json-server`
+4. make a copy of your database and run the JSON server at `json-server -p 5002 -w <your.database.json here>`
+5. `npm start` in root directory to start react server
+6. create a new account and login
+
+## Thank You
 Thanks to Cohort 29 and the instruction staff at Nashville Software School for all of the great suggestions and assistance.
 Thanks to Freepik and flaticon.com for the graphics.
 
