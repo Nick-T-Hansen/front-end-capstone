@@ -29,10 +29,15 @@ export default class Login extends Component {
             "name",
             this.state.name
         )
+        sessionStorage.setItem(
+            "email",
+            this.state.email
+        )
 
         //compare the possible user trying to login to the array of users who have registered and are stored in the users API. If the user passes the authentication, the userId is set and used to render all pages.
-        let possibleUser = sessionStorage.getItem("name")
-        let authenticated = this.props.users.find(user => user.name === possibleUser)
+        let possibleUserName = sessionStorage.getItem("name")
+        let possibleUserEmail = sessionStorage.getItem("email")
+        let authenticated = this.props.users.find(user => user.name === possibleUserName && user.email === possibleUserEmail)
                 //add email as well here
 
         console.log("authenticated", authenticated)
