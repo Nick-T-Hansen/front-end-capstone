@@ -24,7 +24,11 @@ export default class AddForm extends Component {
 
         if (this.state.gearItemQuality === "0" || this.state.gearItemClass === "0") {
             alert("Please select options from the dropdown menus to continue.")
-        } else {
+
+        }
+        else if (this.state.gearItemName === ""){
+            alert("Please provide an item name.")
+        }else {
 
         const createGearItemObject = {
             gearName: this.state.gearItemName,

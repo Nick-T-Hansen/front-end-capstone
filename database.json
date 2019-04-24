@@ -14,6 +14,31 @@
       "id": 3,
       "name": "Becky",
       "email": "becky@gmail.com"
+    },
+    {
+      "name": "Test",
+      "email": "Test@test.com",
+      "id": 4
+    },
+    {
+      "name": "rick",
+      "email": "rick@rick.com",
+      "id": 5
+    },
+    {
+      "name": "abj",
+      "email": "abj@abj.com",
+      "id": 6
+    },
+    {
+      "name": "newuser",
+      "email": "newuser@newuser.com",
+      "id": 7
+    },
+    {
+      "name": "Tommy",
+      "email": "Tommy@gmail.com",
+      "id": 8
     }
   ],
   "gearItems": [
@@ -63,7 +88,7 @@
       "gearQualityId": 2,
       "gearClassId": 3,
       "notes": "Pretty new headlamp. Three light settings.",
-      "borrowedUserId": 7,
+      "borrowedUserId": 1,
       "shared": true,
       "id": 9
     },
@@ -73,7 +98,7 @@
       "gearQualityId": 2,
       "gearClassId": 2,
       "notes": "large cooler",
-      "borrowedUserId": 4,
+      "borrowedUserId": 3,
       "shared": true,
       "id": 11
     },
@@ -103,7 +128,7 @@
       "gearQualityId": 1,
       "gearClassId": 3,
       "notes": "BECAUSE SNOWBOARD BRO",
-      "borrowedUserId": 5,
+      "borrowedUserId": 3,
       "shared": true,
       "id": 15
     },
