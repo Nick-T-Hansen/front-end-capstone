@@ -1,0 +1,226 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Tyler",
+      "email": "tyler@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Nick",
+      "email": "nick@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "Becky",
+      "email": "becky@gmail.com"
+    },
+    {
+      "name": "Test",
+      "email": "Test@test.com",
+      "id": 4
+    },
+    {
+      "name": "rick",
+      "email": "rick@rick.com",
+      "id": 5
+    },
+    {
+      "name": "abj",
+      "email": "abj@abj.com",
+      "id": 6
+    },
+    {
+      "name": "newuser",
+      "email": "newuser@newuser.com",
+      "id": 7
+    },
+    {
+      "name": "Tommy",
+      "email": "Tommy@gmail.com",
+      "id": 8
+    }
+  ],
+  "gearItems": [
+    {
+      "gearName": "REI Half Dome Tent",
+      "userId": 3,
+      "gearQualityId": 1,
+      "gearClassId": 1,
+      "notes": "sleeps 12, missing one tent stake",
+      "borrowedUserId": 5,
+      "shared": true,
+      "id": 1
+    },
+    {
+      "gearName": "Backpack",
+      "userId": 3,
+      "gearQualityId": 1,
+      "gearClassId": 3,
+      "notes": "60L Northface Terra pack",
+      "borrowedUserId": 1,
+      "shared": true,
+      "id": 2
+    },
+    {
+      "gearName": "Wool Blanket",
+      "userId": 1,
+      "gearQualityId": 4,
+      "gearClassId": 1,
+      "notes": "heavy wool, good for fall, large burn holes from last winter.",
+      "borrowedUserId": "",
+      "shared": false,
+      "id": 4
+    },
+    {
+      "gearName": "Headlamp",
+      "userId": 1,
+      "gearQualityId": 3,
+      "gearClassId": 3,
+      "notes": "pretty old and low lumen headlamp",
+      "borrowedUserId": "",
+      "shared": true,
+      "id": 7
+    },
+    {
+      "gearName": "Headlamp",
+      "userId": 3,
+      "gearQualityId": 2,
+      "gearClassId": 3,
+      "notes": "Pretty new headlamp. Three light settings.",
+      "borrowedUserId": 1,
+      "shared": true,
+      "id": 9
+    },
+    {
+      "gearName": "Yeti Cooler",
+      "userId": 1,
+      "gearQualityId": 2,
+      "gearClassId": 2,
+      "notes": "large cooler",
+      "borrowedUserId": 3,
+      "shared": true,
+      "id": 11
+    },
+    {
+      "gearName": "Esbit Stove",
+      "userId": 3,
+      "gearQualityId": 3,
+      "gearClassId": 2,
+      "notes": "well loved esbit stove. You need to buy the fuel. ",
+      "borrowedUserId": "",
+      "shared": true,
+      "id": 13
+    },
+    {
+      "gearName": "Sleeping Pad",
+      "userId": 4,
+      "gearQualityId": 3,
+      "gearClassId": 1,
+      "notes": "old and gross. hobo had it.",
+      "borrowedUserId": "",
+      "shared": false,
+      "id": 14
+    },
+    {
+      "gearName": "pants",
+      "userId": 4,
+      "gearQualityId": 1,
+      "gearClassId": 3,
+      "notes": "BECAUSE SNOWBOARD BRO",
+      "borrowedUserId": 3,
+      "shared": true,
+      "id": 15
+    },
+    {
+      "gearName": "Hammock",
+      "userId": 1,
+      "gearQualityId": 1,
+      "gearClassId": 4,
+      "notes": "warbonnet blackbird. small hole in bug netting.",
+      "borrowedUserId": "",
+      "shared": false,
+      "id": 16
+    },
+    {
+      "gearName": "Sleeping Pad",
+      "userId": 2,
+      "gearQualityId": 4,
+      "gearClassId": 1,
+      "notes": "thin thermarest sleeping pad",
+      "borrowedUserId": "",
+      "shared": true,
+      "id": 17
+    },
+    {
+      "gearName": "Knife",
+      "userId": 2,
+      "gearQualityId": 4,
+      "gearClassId": 5,
+      "notes": "rusty",
+      "borrowedUserId": "",
+      "shared": false,
+      "id": 22
+    },
+    {
+      "gearName": "Frying Pan",
+      "userId": 2,
+      "gearQualityId": 2,
+      "gearClassId": 2,
+      "notes": "cast iron frying pan",
+      "borrowedUserId": "",
+      "shared": false,
+      "id": 23
+    },
+    {
+      "gearName": "fork",
+      "userId": 5,
+      "gearQualityId": 1,
+      "gearClassId": 2,
+      "notes": "poke stuff with it",
+      "borrowedUserId": "",
+      "shared": false,
+      "id": 24
+    }
+  ],
+  "gearQualities": [
+    {
+      "id": 1,
+      "quality": "like new"
+    },
+    {
+      "id": 2,
+      "quality": "very good"
+    },
+    {
+      "id": 3,
+      "quality": "good"
+    },
+    {
+      "id": 4,
+      "quality": "acceptable"
+    }
+  ],
+  "gearClasses": [
+    {
+      "id": 1,
+      "class": "sleeping"
+    },
+    {
+      "id": 2,
+      "class": "eating"
+    },
+    {
+      "id": 3,
+      "class": "hiking"
+    },
+    {
+      "id": 4,
+      "class": "relaxing"
+    },
+    {
+      "id": 5,
+      "class": "miscellaneous"
+    }
+  ]
+}
