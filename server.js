@@ -1,5 +1,5 @@
 
-const dbPath = './api/database.json';
+const dbPath = './database.json';
 const dbRoutes = Object.keys(require(dbPath)).map(r => '/' + r);
 const jsonServer = require('json-server');
 const server = jsonServer.create();
