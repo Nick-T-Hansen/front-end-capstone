@@ -1,6 +1,6 @@
 const remoteURL = process.env.NODE_ENV === 'production'
-? "/"
-: "http://localhost:5002/";
+? "/api"
+: "http://localhost:5002";
 
 export default {
     //GET expanded all (gear-user,class,quality)
